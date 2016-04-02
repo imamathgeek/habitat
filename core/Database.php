@@ -45,7 +45,7 @@ class Database {
     }
 
     private function connect($dbUserName, $dbUserPass, $dbName) {
-        $debugMe = true;
+        $debugMe = falses;
 
         $query = NULL;
 
@@ -306,47 +306,29 @@ class Database {
     //  $spacesAllowed are %20 and not a blank space
     //  $semiColonAllowed is ; and generally you do not have them in your query
     //
-    public function select($query, $values = "", $wheres = 1, $conditions = 0, $quotes = 0, $symbols = 0, $spacesAllowed = false, $semiColonAllowed = false) {
+    public function select($table, $values) {
 
         $query = "SELECT *
                     FROM :table
-                    WHERE";
+                    WHERE ";
 
-        // foreach($)
-
-        if ($wheres != $this->countWhere($query)) {
-            return "";
+        foreach ($values as $key => $value) {
+            $query .= $key . " = " . $value . " AND ";
         }
 
-        if ($conditions != $this->countConditions($query)) {
-            return "";
-        }
-
-        if ($quotes != $this->countQuotes($query)) {
-            return "";
-        }
-
-        if ($symbols != $this->countSymbols($query)) {
-            return "";
-        }
-
-        if ($quotes == 0 AND $symbols == 0) {
-            $query = $this->sanitizeQuery($query, $spacesAllowed, $semiColonAllowed);
-        }
+        $query = rtrim($query, " AND ");
 
         $statement = $this->db->prepare($query);
 
-        if (is_array($values)) {
-            $statement->execute($values);
+        $statement->bindParam(":table", $table);
+        $statement->execute();
+        $results = $statement->fetchAll();
+        
+        if (empty($results)) {
+            return false;
         } else {
-            $statement->execute();
+            return $results[0];
         }
-
-        $recordSet = $statement->fetchAll();
-
-        $statement->closeCursor();
-
-        return $recordSet;
     }
 
     // public function selectAll

@@ -108,12 +108,15 @@ require_once('lib/custom-functions.php');
         // Set up database connection
         //
         
+        $username = 
+
         $dbUserName = "edzwonar_admin";
         $whichPass = "qfBhlGQ56O3w";
         $dbName = "EDZWONAR_habitat";
         $db = new Database($dbUserName, $whichPass, $dbName);
 
-        print_r($db);
+        $person = $db->select("tblPerson", array("fldFirstName" => "Emilie"));
+        print_r($person);
         ?>	
 
     </head>
@@ -121,6 +124,6 @@ require_once('lib/custom-functions.php');
     <!-- **********************     Body section      ********************** -->
     <?php
     print '<body id="' . $path_parts['filename'] . '">';
-    include "header.php";
+    // include "header.php";
     include "nav.php";
     ?>
