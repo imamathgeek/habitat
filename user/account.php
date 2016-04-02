@@ -2,7 +2,9 @@
 <?php
 
 include "../top.php";
+include "../lib/validation-functions.php";
 
+$person = $db->select('tblPerson', $username);
 
 // Initialize variables one for each form element
 // in the order they appear on the form
