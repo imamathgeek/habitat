@@ -126,7 +126,7 @@ if (isset($_POST["btnSubmit"])) {
   
 
 
-   <h1 id="frmProfile">Profile</h1>
+   print'<h1 id="frmProfile">Profile</h1>';
    ?>
 
 
