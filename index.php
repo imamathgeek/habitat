@@ -61,13 +61,20 @@ $year = "Freshman";
                        onfocus="this.select()" >
 
             </fieldset>
-
-            <fieldset class="wrapper">
-            <legend>Year</legend>
-
-
+            
+                <fieldset class="contact">
+                <label for="txtUserName" class="required"> Username
+                    <input type="text" id="txtUserName" name="txtUserName"
+                           value="<?php print $username; ?>"
+                           tabindex="100"  maxlength="45" placeholder="Enter your username"
+                           <?php if ($usernameERROR) print 'class="mistake"'; ?>
+                           onfocus="this.select()"
+                           autofocus>
+                </label>
+                </fieldset>
+  
             <fieldset  class="lists">
-                <label for="lstDesc"> Type</label>
+                <label for="lstDesc"> Year </label>
                 <select id="lstDesc" 
                         name="lstDesc" 
                         tabindex="520" >
@@ -117,16 +124,7 @@ $year = "Freshman";
                                tabindex="340"> Prefer not to disclose</label>
             </fieldset>
 
-             <fieldset class="contact">
-                <label for="txtUserName" class="required"> Username
-                    <input type="text" id="txtUserName" name="txtUserName"
-                           value="<?php print $username; ?>"
-                           tabindex="100"  maxlength="45" placeholder="Enter your username"
-                           <?php if ($usernameERROR) print 'class="mistake"'; ?>
-                           onfocus="this.select()"
-                           autofocus>
-                </label>
-                </fieldset>
+             
 
 
             </fieldset> <!-- ends contact -->
