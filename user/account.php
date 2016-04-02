@@ -13,6 +13,7 @@ $person = $db->select('tblPerson', $array);
 //include "top.php";
 print'<html>';
 
+
 $firstName = "Jack";
 $lastName = "Steffens";
 $email = "jsteffen@uvm.edu";
@@ -120,6 +121,7 @@ if (isset($_POST["btnSubmit"])) {
 
    ?>
 
+   <link rel="stylesheet" href="../style.css" type="text/css" media="screen">
    <h1 id="frmProfile">Profile</h1>
 
  
