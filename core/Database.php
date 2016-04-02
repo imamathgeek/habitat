@@ -317,13 +317,14 @@ class Database {
         }
 
         $query = rtrim($query, " AND ");
-        error_log($query);
         $statement = $this->db->prepare($query);
 
         $statement->bindParam(":table", $table);
         $statement->execute();
         $results = $statement->fetchAll();
         
+        error_log(print_r($results, 1));
+
         if (empty($results)) {
             return false;
         } else {
