@@ -139,6 +139,6 @@ define("ROOT", $address);
     <!-- **********************     Body section      ********************** -->
     <?php
     print '<body id="' . $path_parts['filename'] . '">';
-    // include "header.php";
+    include "header.php";
     include "nav.php";
     ?>
