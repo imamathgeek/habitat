@@ -128,9 +128,8 @@ include "top.php";
         <?php
     }// end body submit
     ?>
-<<<<<<< HEAD
-</article>
-=======
+
+
 </article>
 
 <?php
@@ -138,4 +137,4 @@ include "footer.php";
 if ($debug)
     print "<p>END OF PROCESSING</p>";
 ?>
->>>>>>> 27f44f14236ecf7342966bd7b1bbd76b10b1c351
+
