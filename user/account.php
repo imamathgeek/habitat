@@ -271,7 +271,49 @@ if (isset($_POST["btnSubmit"])) {
                             <p>Now Please take a second and consider your responses, then submit</p>
                             <input type="submit" id="btnSubmit" name="btnSubmit" value="Save" tabindex="900" class="button">
 
+
+					<fieldset class="dayVNight">    
+                <legend>Would you define yourself as a:</legend>
+                <label><input type="radio" id="radEarlyB" name="radDayPref"
+                              value="EarlyBird"><img src="img/earlyBird.gif" width="200" height="200"></label>
+                <br>
+                <label><input type="radio" id="radNightO" name="radDayPref"
+                              value="NightOwl"><img src="img/nightOwl.gif" width="200" height="200"></label>
+            </fieldset>
+            
+            <fieldset class="smoker">
+                <legend>Are you a smoker?:</legend>
+                <label><input type="radio" id="radYesSmoker" 
+                              name="radSmoking" value="yesSmoker"><img src="img/cigarette.gif" width="200" height="200"></label>
+                <br>
+                <label><input type="radio" id="radYesPot" name="radSmoking"
+                              value="yesPot"><img src="img/pot.gif" width="200"
+                              height="200"></label>
+                <br>
+                <label><input type="radio" id="radYesBoth" 
+                              name="radSmoking" 
+                              value="yesBoth"><img src="img/cigaretteAndPot.gif" width="200" height="200"></label>
+                <br>
+                <label><input type="radio" id="radNoSmoker" 
+                              name="radSmoking" value="noSmoker"><img src="img/nonSmoker.gif" width="200" height="200"></label>
+            </fieldset>
+            
+            <fieldset class="partier">
+                <legend>Are you a partier?:</legend>
+                <label><input type="radio" id="radYesPartier" 
+                              name="radPartier" 
+                              value="yesPartier"><img src="img/partyAnimal.gif" width="200" height="200"></label>
+                <br>
+                <label><input type="radio" id="radNoPartier" 
+                              name="radPartier" value="noPartier"><img src="img/bookWorm.gif" width="200" height="200"></label>
+            </fieldset>
+            
+
+
                 </form>
+                
+                
+                
                 <?php }
                 else {
                 
