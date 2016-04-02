@@ -314,7 +314,7 @@ class Database {
                     FROM :table
                     WHERE";
 
-        foreach($)
+        // foreach($)
 
         if ($wheres != $this->countWhere($query)) {
             return "";
