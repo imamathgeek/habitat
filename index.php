@@ -8,9 +8,9 @@ $person = $db->select('tblPerson', $array);
 // in the order they appear on the form
 //include "top.php";
 print'<html>';
-$firstName = "Jack";
-$lastName = "Steffens";
-$email = "jsteffen@uvm.edu";
+$firstName = "";
+$lastName = "";
+$email = "@uvm.edu";
 $year = $person['fldYear'];
 $bio = $person['fldBio'];
 $onOff = $person['fldOnCampus'];
