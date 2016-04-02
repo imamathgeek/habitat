@@ -14,6 +14,7 @@ define("ROOT", $address);
 <html lang="en">
     <head>
         <title>Habitat</title>
+        <img 
         <meta charset="utf-8">
         <meta name="author" content="Mark me wrong">
         <meta name="description" content="Mark me wrong for not changing this">
