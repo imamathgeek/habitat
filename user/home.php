@@ -1,18 +1,21 @@
 <?php
 include "../top.php";
 
-$strangers = $db->selectStrangersByNetId('jsiebert');
-$stranger = $strangers[0];
 
-if (isset($_POST)) {
+if (!empty($_POST)) {
 	$is_match = false;
 
 	if (isset($_POST['btnYes'])) {
 		$is_match = true;
 	}
+
+	$match_id = $_POST['hidUserId'];
+
+	$db->insertMatch($username, $match_id, $is_match);
 }
 
-print_r($_POST);
+$strangers = $db->selectStrangersByNetId('jsiebert');
+$stranger = $strangers[0];
 
 ?>
 
