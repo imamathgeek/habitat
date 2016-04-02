@@ -237,6 +237,24 @@ class Database {
         return $success;
     }
 
+    public function insertMatch($net_id, $match_id, $is_match)
+    {
+        $id = $this->selectIdByNetId($net_id);
+        $is_match = (int)$is_match;
+
+        $query = "INSERT INTO tblMatches (fnkSwiperId, fnkSwipeeId, fldMatched) ";
+        $query.= "VALUES (" . $id . ", " . $match_id . ", " . $is_match . ")";
+        $statement = $this->db->prepare($query);
+        $status = $statement->execute();
+
+        return $status;
+    }
+
+    public function insertPerson($values)
+    {
+        $query = "INSERT INTO tblMatches ()";
+    }
+
     // #########################################################################
     // Used the get the value of the autonumber primary key on the last insert
     // sql statement you just performed
@@ -318,7 +336,7 @@ class Database {
         $statement = $this->db->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-        error_log(print_r($results, 1));
+
         if (empty($results)) {
             return false;
         } else {
@@ -339,6 +357,16 @@ class Database {
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         return $results;
+    }
+
+    public function selectIdByNetId($username)
+    {
+        $query = "SELECT pmkId FROM tblPerson WHERE fldUsername = '" . $username . "'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result[0]['pmkId'];
     }
 
     public function selectMatchesByNetId($net_id)
@@ -372,7 +400,37 @@ class Database {
 
     public function selectStrangersbyNetId($net_id)
     {
+        $users = $this->selectAllUsers();
 
+        $ids = array();
+        foreach ($users as $user) {
+            if ($user['fldUsername'] !== $net_id) {
+                $ids[] = $user['pmkId'];
+            }
+        }
+        
+        $query = "SELECT * FROM tblMatches ";
+        $query.= "INNER JOIN tblPerson ON pmkId = fnkSwiperId ";
+        $query.= "WHERE fldUsername = " . "'" . $net_id . "'" ;
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        $matches = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $match_ids = array();
+        foreach ($matches as $match) {
+            $match_ids[] = $match['fnkSwipeeId'];
+        }
+
+        $diff = array_diff($ids, $match_ids);
+
+        $query = "SELECT * FROM tblPerson ";
+        $query.= "WHERE pmkId IN (" . rtrim(implode($diff, ", "), ", ") . ") ";
+
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        $strangers = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $strangers;
     }
 
     public function selectStrangersBy($values)

@@ -1,50 +1,124 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Apr 2, 2016, 9:22:52 AM
-    Author     : Gretchen
-*/
 
 html {
-    background-image: url(http://images4.fanpop.com/image/photos/22100000/Green-leaves-green-22176085-1920-1440.jpg);
+    background-image: url("http://images4.fanpop.com/image/photos/22100000/Green-leaves-green-22176085-1920-1440.jpg");
 }
 body {
-    background-color: rgba(255,255,255,.8);
-    padding: 2em;
+    background-color: rgba(255, 255, 255, 0.8);
     margin: 2em;
+    padding: 2em;
 }
 h1 {
-    text-align: center;
     font-family: sans-serif;
+    text-align: center;
 }
 table {
-    text-align: center;
-    border: solid;
-    padding: 3em;
+    border: medium solid;
     margin: auto;
+    padding: 3em;
+    text-align: center;
 }
 table td {
     padding: 1em;
 }
 table tbody tr {
-    border: solid;
+    border: medium solid;
 }
 nav {
+    background-color: rgba(50, 200, 80, 0.3);
+    font-family: sans-serif;
+    font-size: 15pt;
+    padding-bottom: 1px;
+    padding-top: 1px;
     text-align: center;
 }
 p {
-    font-size: 18pt;
-    background-color: rgba(80,150,0,.2);
+    background-color: rgba(80, 150, 0, 0.2);
     border-radius: 15px;
+    font-size: 18pt;
     padding: 2em;
 }
 nav ol li {
-    list-style-type: none;
     display: inline;
-    margin-left: 4em;
-    margin-right: 8em;
     font-family: sans-serif;
+    list-style-type: none;
+    margin-left: 15%;
+    margin-right: 17%;
+}
+label {
+    display: block;
+}
+#frmRegister {
+    display: block;
+    font-family: sans-serif;
+    font-size: 17pt;
+    margin: auto;
+    width: 50%;
+}
+.radio {
+    border: medium solid;
+    display: block;
+    margin: auto;
+    text-align: left;
+}
+fieldset {
+    border: medium none;
+    display: block;
+    margin: auto;
+}
+label {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    text-align: center;
+}
+h3 {
+}
+#frmRegister input {
+    border: 1px solid;
+    border-radius: 10px;
+    font-family: sans-serif;
+    font-size: 15pt;
+    padding: 3px;
+}
+#txtBio:hover {
+    box-shadow: 0 0 15px #1fb097;
+}
+#txtBio {
+    border: 1px solid;
+    border-radius: 15px;
+    display: block;
+    margin: 1em auto auto;
+    padding: 8px;
+}
+fieldset p {
+    display: block;
+    margin: auto;
+}
+#frmRegister input:hover {
+    box-shadow: 0 0 15px #1fb097;
+}
+#frmRegister h3 {
+    background-color: #1fb097;
+    border-radius: 5em;
+    margin-top: 0.5em;
+    padding: 3px;
+    text-align: center;
+}
+#btnSubmit {
+    display: block;
+    margin: 1em auto auto;
+}
+#radGenderFemale {
+    display: none;
+}
+#radGenderOther {
+    display: none;
+}
+#radGenderMale {
+    display: none;
+}
+
+.prof-pic {
+    width:400px;
 }

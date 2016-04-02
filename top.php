@@ -1,23 +1,32 @@
 <?php
 include "lib/constants.php";
 require_once('lib/custom-functions.php');
+
+if ($_SERVER['HTTP_HOST'] == 'localhost:8888')
+	$address = 'https://localhost:8888';
+else
+	$address = 'https://jsiebert.w3.uvm.edu/codefest/habitat';
+
+define("ROOT", $address);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title>Habitat</title>
+        <img 
         <meta charset="utf-8">
         <meta name="author" content="Mark me wrong">
         <meta name="description" content="Mark me wrong for not changing this">
-
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!--[if lt IE 9]>
         <script src="//html5shim.googlecode.com/sin/trunk/html5.js"></script>
         <![endif]-->
 
-        <link rel="stylesheet" href="style.css" type="text/css" media="screen">
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="<?= ROOT . '/style.css' ?>" type="text/css" media="screen">
+        
         <?php
         $debug = false;
         ini_set('display_errors', 1);
@@ -110,15 +119,18 @@ require_once('lib/custom-functions.php');
         //
         // Set up database connection
         //
-        
-        $username = 
 
         $dbUserName = "edzwonar_admin";
         $whichPass = "qfBhlGQ56O3w";
         $dbName = "EDZWONAR_habitat";
         $db = new Database($dbUserName, $whichPass, $dbName);
         
-        $username = $_SERVER["REMOTE_USER"];
+        if (isset($_SERVER["REMOTE_USER"]))
+        	$username = $_SERVER["REMOTE_USER"];
+        
+        if ($_SERVER['HTTP_HOST'] == 'localhost:8888')
+            $username = 'jsiebert';
+
         ?>	
 
     </head>
@@ -126,6 +138,5 @@ require_once('lib/custom-functions.php');
     <!-- **********************     Body section      ********************** -->
     <?php
     print '<body id="' . $path_parts['filename'] . '">';
-    // include "header.php";
-    include "nav.php";
+    include "header.php";
     ?>

@@ -1,9 +1,14 @@
 <?php
 include("../top.php");
+include("../nav.php");
+<<<<<<< HEAD
 
 $matches = $db->selectMatchesByNetId('edzwonar');
+=======
+$matches = $db->selectMatchesByNetId($username);
+>>>>>>> 08efcb382e1701f5c5086bb8e39e17feefc1d5e8
 ?>
-
+ <link rel="stylesheet" href="style.css" type="text/css" media="screen">
 <h1>Meet Your Matches!</h1>
 
 <p id="des">Welcome to your habitat, a place for you, where you belong. Our team has carefully selected people we feel will complement your living style. Start emailing your matches to have your perfect college roommate experience here at UVM!</p>
