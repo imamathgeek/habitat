@@ -250,6 +250,11 @@ class Database {
         return $status;
     }
 
+    public function insertPerson($values)
+    {
+        $query = "INSERT INTO tblMatches ()";
+    }
+
     // #########################################################################
     // Used the get the value of the autonumber primary key on the last insert
     // sql statement you just performed
@@ -331,7 +336,7 @@ class Database {
         $statement = $this->db->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-        error_log(print_r($results, 1));
+
         if (empty($results)) {
             return false;
         } else {
@@ -413,7 +418,7 @@ class Database {
 
         $match_ids = array();
         foreach ($matches as $match) {
-            $match_ids[] = $match['pmkId'];
+            $match_ids[] = $match['fnkSwipeeId'];
         }
 
         $diff = array_diff($ids, $match_ids);

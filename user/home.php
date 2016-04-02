@@ -1,5 +1,6 @@
 <?php
 include "../top.php";
+include "../nav.php";
 
 
 if (!empty($_POST)) {
@@ -10,11 +11,10 @@ if (!empty($_POST)) {
 	}
 
 	$match_id = $_POST['hidUserId'];
-
 	$db->insertMatch($username, $match_id, $is_match);
 }
 
-$strangers = $db->selectStrangersByNetId('jsiebert');
+$strangers = $db->selectStrangersByNetId($username);
 $stranger = $strangers[0];
 
 ?>
@@ -22,35 +22,35 @@ $stranger = $strangers[0];
 <div class="text-center">
 	<div>
 		<h3><?= $stranger['fldFirstName'] . " " . $stranger['fldLastName']; ?></h3>
-		<img src="<?= ROOT . '/web/img/defaultProPic.jpg'; ?>" />
+		<img class="prof-pic" src="<?= ROOT . '/web/img/gifs/defaultProPic.gif'; ?>" />
 	</div>
 	<div class="row">
 		<div class="col-xs-3"></div>
 		<div class="col-xs-1">
-			<img style="width:100%;" src="<?= ROOT . '/web/img/earlyBird.jpg' ?>"></li>
+			<img style="width:100%;" src="<?= ROOT . '/web/img/gifs/earlyBird.gif' ?>"></li>
 		</div>
 		<div class="col-xs-1">
-			<img style="width:100%;" src="<?= ROOT . '/web/img/nonSmoker.jpg' ?>"></li>
+			<img style="width:100%;" src="<?= ROOT . '/web/img/gifs/nonSmoker.gif' ?>"></li>
 		</div>
 		<div class="col-xs-1">
-			<img style="width:100%;" src="<?= ROOT . '/web/img/pot.jpg' ?>"></li>
+			<img style="width:100%;" src="<?= ROOT . '/web/img/gifs/pot.gif' ?>"></li>
 		</div>
 		<div class="col-xs-1">
-			<img style="width:100%;" src="<?= ROOT . '/web/img/partyAnimal.jpg' ?>"></li>
+			<img style="width:100%;" src="<?= ROOT . '/web/img/gifs/partyAnimal.gif' ?>"></li>
 		</div>
 		<div class="col-xs-1">
-			<img style="width:100%;" src="<?= ROOT . '/web/img/4Year.jpg' ?>"></li>
+			<img style="width:100%;" src="<?= ROOT . '/web/img/gifs/4Year.gif' ?>"></li>
 		</div>
 		<div class="col-xs-3"></div>
 	</div>
 	<div>
 		<form action="<?php print $phpSelf; ?>" method="post" id="frmNoMatch">
-			<input type="hidden" id="hidUserId" name="hidUserId" value="<?= print $stranger['pmkId']; ?>" />
+			<input type="hidden" id="hidUserId" name="hidUserId" value="<?php print $stranger['pmkId']; ?>" />
 			<input type="submit" id="btnNo" name="btnNo" value="Nah" class="button">
 		</form>
 		<a>View Profile</a>
 		<form action="<?php print $phpSelf; ?>" method="post" id="frmMatch">
-			<input type="hidden" id="hidUserId" name="hidUserId" value="<?= print $stranger['pmkId']; ?>" />
+			<input type="hidden" id="hidUserId" name="hidUserId" value="<?php print $stranger['pmkId']; ?>" />
 			<input type="submit" id="btnYes" name="btnYes" value="Yes" class="button">
 		</form>
 	</div>

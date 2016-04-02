@@ -118,3 +118,7 @@ fieldset p {
 #radGenderMale {
     display: none;
 }
+
+.prof-pic {
+    width:400px;
+}

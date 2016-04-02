@@ -8,9 +8,9 @@ $person = $db->select('tblPerson', $array);
 // in the order they appear on the form
 //include "top.php";
 print'<html>';
-$firstName = "Jack";
-$lastName = "Steffens";
-$email = "jsteffen@uvm.edu";
+$firstName = "";
+$lastName = "";
+$email = "@uvm.edu";
 $year = $person['fldYear'];
 $bio = $person['fldBio'];
 $onOff = $person['fldOnCampus'];
@@ -33,7 +33,7 @@ if (isset($_POST["btnSubmit"])) {
     $lastName =  htmlentities($_POST["txtLastName"], ENT_QUOTES, "UTF-8");
     $email = filter_var($_POST["txtEmail"], FILTER_SANITIZE_EMAIL);
     $gender = htmlentities($_POST["radGender"], ENT_QUOTES, "UTF-8");
-    // $year = 
+    $year = htmlentities($_POST["intYear"], ENT_QUOTES, "UTF-8");
     $bio = htmlentities($_POST["txtBio"], ENT_QUOTES, "UTF-8");
     
     $dataRecord[] = $firstName;
@@ -198,7 +198,11 @@ if (isset($_POST["btnSubmit"])) {
                                        name="radGender" 
                                        value="Male"
                                        <?php if ($gender == "Male" || $gender == "male") print 'checked' ?>
+<<<<<<< HEAD
                                        tabindex="330"><img id="imgMale" src="web/img/gifs/male.gif" width="55" height="55" onclick="RadioClicked('radGenderField', 'radGender','frmRegister')" style="cursor:pointer;"> 
+=======
+                                       tabindex="330"> <img id="imgMale" src="web/img/gifs/male.gif" width="55" height="55" onclick="RadioClicked('radGenderField', 'radGender','frmRegister')" style="cursor:pointer;">
+>>>>>>> 08efcb382e1701f5c5086bb8e39e17feefc1d5e8
                             </label>
 
                             <label>
@@ -208,7 +212,11 @@ if (isset($_POST["btnSubmit"])) {
                                        name="radGender" 
                                        value="Female"
                                        <?php if ($gender == "Female" || $gender == "female") print 'checked' ?>
+<<<<<<< HEAD
                                        tabindex="340"><img id="imgFemale" src="web/img/gifs/female.gif" width="55" height="55" onclick="RadioClicked('radGenderField', 'radGender','frmRegister')" style="cursor:pointer;"> 
+=======
+                                       tabindex="340"> <img id="imgFemale" src="web/img/gifs/female.gif" width="55" height="55" onclick="RadioClicked('radGenderField', 'radGender','frmRegister')" style="cursor:pointer;">
+>>>>>>> 08efcb382e1701f5c5086bb8e39e17feefc1d5e8
                             </label>
 
                             <label>
@@ -218,7 +226,11 @@ if (isset($_POST["btnSubmit"])) {
                                        name="radGender" 
                                        value="Other"
                                        <?php if ($gender == "Other" or $gender == "other") print 'checked' ?>
+<<<<<<< HEAD
                                        tabindex="330"><img id="imgFemale" src="web/img/gifs/otherGender.gif" width="55" height="55" onclick="RadioClicked('radGenderField', 'radGender','frmRegister')" style="cursor:pointer;"> 
+=======
+                                       tabindex="330"> <img id="imgFemale" src="web/img/gifs/otherGender.gif" width="55" height="55" onclick="RadioClicked('radGenderField', 'radGender','frmRegister')" style="cursor:pointer;">
+>>>>>>> 08efcb382e1701f5c5086bb8e39e17feefc1d5e8
                             </label>
 
                         </fieldset>
@@ -236,6 +248,7 @@ if (isset($_POST["btnSubmit"])) {
                                       style="width: 25em; height: 4em;" ><?php print $bio; ?>
                             </textarea>
 
+<<<<<<< HEAD
                         <br><br>
 
 
@@ -249,6 +262,14 @@ if (isset($_POST["btnSubmit"])) {
                             <input type="submit" id="btnSubmit" name="btnSubmit" value="Save" tabindex="900" class="button">
 
  </fieldset>
+=======
+                        <br><br>           
+                        <fieldset class="buttons">
+                          <label>Submit</label>
+                          <input type="submit" id="btnSubmit" name="btnSubmit" value="Save" tabindex="900" class="button">
+                        </fieldset>
+                      </fieldset>
+>>>>>>> 08efcb382e1701f5c5086bb8e39e17feefc1d5e8
                 </form>
                 <?php } ?>
              </html>

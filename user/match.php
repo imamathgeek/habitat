@@ -1,8 +1,12 @@
 <?php
 include("../top.php");
 include("../nav.php");
+<<<<<<< HEAD
 
 $matches = $db->selectMatchesByNetId('edzwonar');
+=======
+$matches = $db->selectMatchesByNetId($username);
+>>>>>>> 08efcb382e1701f5c5086bb8e39e17feefc1d5e8
 ?>
  <link rel="stylesheet" href="style.css" type="text/css" media="screen">
 <h1>Meet Your Matches!</h1>
