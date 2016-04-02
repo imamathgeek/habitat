@@ -1,0 +1,9 @@
+table_name: person
+registry:
+  - id
+  - created_at
+  - updated_at
+  - first_name: { type: varchar, length: 128, allow_null: false }
+  - last_name: { type: varchar, length: 128, allow_null: false }
+  - net_id: { type: varchar, length: 128, allow_null: false }
+  - year: { type: int, length: 1, allow_null: false }
