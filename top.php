@@ -37,9 +37,9 @@ require_once('lib/custom-functions.php');
         $includeLibPath = "../lib/";
         
         
-        require_once('lib/mailMessage.php');
+        // require_once('lib/mailMessage.php');
 
-        require_once('lib/security.php');
+        // require_once('lib/security.php');
         
         require_once($includeDBPath . 'Database.php');
         
