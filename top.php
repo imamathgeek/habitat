@@ -18,7 +18,7 @@ define("ROOT", dirname(__FILE__));
         <script src="//html5shim.googlecode.com/sin/trunk/html5.js"></script>
         <![endif]-->
 
-        <link rel="stylesheet" href="<?= ROOT . '/style.css'; ?>" type="text/css" media="screen">
+        <link rel="stylesheet" href="style.css" type="text/css" media="screen">
 
         <?php
         $debug = false;
