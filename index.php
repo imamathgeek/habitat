@@ -239,10 +239,17 @@ if (isset($_POST["btnSubmit"])) {
                         <br><br>
 
 
+
+
+                      
+
  <fieldset class="buttons">
+
                             <label>Submit</label>
                             <input type="submit" id="btnSubmit" name="btnSubmit" value="Save" tabindex="900" class="button">
+</fieldset>
 
+ </fieldset>
                 </form>
                 <?php } ?>
              </html>
