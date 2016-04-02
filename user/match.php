@@ -1,6 +1,6 @@
 <?php
 include("../top.php");
-
+include("../nav.php");
 $matches = $db->selectMatchesByNetId('edzwonar');
 ?>
 
