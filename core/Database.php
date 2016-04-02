@@ -345,24 +345,29 @@ class Database {
     {
         $query = "SELECT * FROM tblMatches ";
         $query.= "INNER JOIN tblPerson ON pmkId = fnkSwiperId ";
-        $query.= "WHERE fldUsername = " . "'" . $net_id . "'";
+        $query.= "WHERE fldUsername = " . "'" . $net_id . "'" ;
+        $query.= "AND fldMatched = 1";
         $statement = $this->db->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-        
+
+        $user_id = $results[0]['pmkId'];
         // Get matching IDs and grab that user info
-        $matchIds = array();
+        $match_ids = array();
         foreach ($results as $result)
         {
-            if ($result['fldMatched']) {
-                $matchIds[] = $result['pmkId'];
-            }
+            $match_ids[] = $result['fnkSwipeeId'];
         }
 
         $query = "SELECT * FROM tblPerson ";
-        $query.= "WHERE pmkId IN (" . rtrim(implode($matchIds, ", "), ", ") . ")"; 
+        $query.= "INNER JOIN tblMatches ON pmkId = fnkSwiperId ";
+        $query.= "WHERE pmkId IN (" . rtrim(implode($match_ids, ", "), ", ") . ") ";
+        $query.= " AND fnkSwipeeId = " . $user_id . " AND fldMatched = 1";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        $matches = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        return $results;
+        return $matches;
     }
 
     public function selectStrangersbyNetId($net_id)
