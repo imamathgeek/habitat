@@ -65,19 +65,12 @@ if (isset($_POST["btnSubmit"])) {
         $errorMsg[] = "Your email address appears to be incorrect.";
         $emailERROR = true;
     }
-    if (($year = "") | ($year < 1)){
-        $errorMsg[]= "Please enter what year you are in at UVM.(Integer with a value of at least 1)";
-        $yearERROR = true;
-    }
+    
     else if (!verifyNumeric($year)){
         $errorMsg[] = "Your year must be a numeric value.";
         $yearERROR = true;
     }
     
-    if(!verifyAlphaNum($bio)){
-        $errorMsg[] = "Your bio appears to have extra characters";
-        $bioERROR = true;
-    }
   if (!empty($errorMsg)){
     print '<ul>';
     foreach($errorMsg as $error){
