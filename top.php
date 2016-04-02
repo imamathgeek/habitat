@@ -2,7 +2,13 @@
 include "lib/constants.php";
 require_once('lib/custom-functions.php');
 
-define("ROOT", dirname(__FILE__));
+if ($_SERVER['HTTP_HOST'] == 'localhost:8888')
+	$address = 'http://localhost:8888';
+else
+	$address = 'http://jsiebert.w3.uvm.edu/codefest/habitat';
+
+define("ROOT", $address);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,15 +25,13 @@ define("ROOT", dirname(__FILE__));
         <script src="//html5shim.googlecode.com/sin/trunk/html5.js"></script>
         <![endif]-->
 
-        <link rel="stylesheet" href="style.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="<?= ROOT . '/style.css' ?>" type="text/css" media="screen">
 
         <?php
         $debug = false;
         ini_set('display_errors', 1);
 		ini_set('display_startup_errors', 1);
 		error_reporting(E_ALL);
-
-		echo ROOT;
 
         // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
         //

@@ -237,6 +237,19 @@ class Database {
         return $success;
     }
 
+    public function insertMatch($net_id, $match_id, $is_match)
+    {
+        $id = $this->selectIdByNetId($net_id);
+        $is_match = (int)$is_match;
+
+        $query = "INSERT INTO tblMatches (fnkSwiperId, fnkSwipeeId, fldMatched) ";
+        $query.= "VALUES (" . $id . ", " . $match_id . ", " . $is_match . ")";
+        $statement = $this->db->prepare($query);
+        $status = $statement->execute();
+
+        return $status;
+    }
+
     // #########################################################################
     // Used the get the value of the autonumber primary key on the last insert
     // sql statement you just performed
@@ -339,6 +352,16 @@ class Database {
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         return $results;
+    }
+
+    public function selectIdByNetId($username)
+    {
+        $query = "SELECT pmkId FROM tblPerson WHERE fldUsername = '" . $username . "'";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result[0]['pmkId'];
     }
 
     public function selectMatchesByNetId($net_id)
