@@ -320,10 +320,9 @@ class Database {
         $statement = $this->db->prepare($query);
 
         $statement->bindParam(":table", $table);
+        error_log(print_r($statement, 1));
         $statement->execute();
         $results = $statement->fetchAll();
-        
-        error_log(print_r($results, 1));
 
         if (empty($results)) {
             return false;
