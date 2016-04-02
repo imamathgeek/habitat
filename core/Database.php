@@ -336,7 +336,7 @@ class Database {
         $statement = $this->db->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-        error_log(print_r($results, 1));
+
         if (empty($results)) {
             return false;
         } else {
@@ -420,8 +420,6 @@ class Database {
         foreach ($matches as $match) {
             $match_ids[] = $match['fnkSwipeeId'];
         }
-
-        print_r($match_ids);
 
         $diff = array_diff($ids, $match_ids);
 

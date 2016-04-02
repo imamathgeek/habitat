@@ -3,9 +3,9 @@ include "lib/constants.php";
 require_once('lib/custom-functions.php');
 
 if ($_SERVER['HTTP_HOST'] == 'localhost:8888')
-	$address = 'http://localhost:8888';
+	$address = 'https://localhost:8888';
 else
-	$address = 'http://jsiebert.w3.uvm.edu/codefest/habitat';
+	$address = 'https://jsiebert.w3.uvm.edu/codefest/habitat';
 
 define("ROOT", $address);
 
@@ -24,7 +24,6 @@ define("ROOT", $address);
         <script src="//html5shim.googlecode.com/sin/trunk/html5.js"></script>
         <![endif]-->
 
-        <link rel="stylesheet" href="style.css" type="text/css" media="screen">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" href="<?= ROOT . '/style.css' ?>" type="text/css" media="screen">
         
@@ -128,8 +127,10 @@ define("ROOT", $address);
         
         if (isset($_SERVER["REMOTE_USER"]))
         	$username = $_SERVER["REMOTE_USER"];
-        else
-        	$username = 'edzwonar';
+        
+        if ($_SERVER['HTTP_HOST'] == 'localhost:8888')
+            $username = 'jsiebert';
+
         ?>	
 
     </head>
@@ -138,5 +139,4 @@ define("ROOT", $address);
     <?php
     print '<body id="' . $path_parts['filename'] . '">';
     include "header.php";
-    include "nav.php";
     ?>

@@ -1,5 +1,6 @@
 <?php
 include "../top.php";
+include "../nav.php";
 
 
 if (!empty($_POST)) {
@@ -21,24 +22,24 @@ $stranger = $strangers[0];
 <div class="text-center">
 	<div>
 		<h3><?= $stranger['fldFirstName'] . " " . $stranger['fldLastName']; ?></h3>
-		<img src="<?= ROOT . '/web/img/defaultProPic.jpg'; ?>" />
+		<img class="prof-pic" src="<?= ROOT . '/web/img/gifs/defaultProPic.gif'; ?>" />
 	</div>
 	<div class="row">
 		<div class="col-xs-3"></div>
 		<div class="col-xs-1">
-			<img style="width:100%;" src="<?= ROOT . '/web/img/earlyBird.jpg' ?>"></li>
+			<img style="width:100%;" src="<?= ROOT . '/web/img/gifs/earlyBird.gif' ?>"></li>
 		</div>
 		<div class="col-xs-1">
-			<img style="width:100%;" src="<?= ROOT . '/web/img/nonSmoker.jpg' ?>"></li>
+			<img style="width:100%;" src="<?= ROOT . '/web/img/gifs/nonSmoker.gif' ?>"></li>
 		</div>
 		<div class="col-xs-1">
-			<img style="width:100%;" src="<?= ROOT . '/web/img/pot.jpg' ?>"></li>
+			<img style="width:100%;" src="<?= ROOT . '/web/img/gifs/pot.gif' ?>"></li>
 		</div>
 		<div class="col-xs-1">
-			<img style="width:100%;" src="<?= ROOT . '/web/img/partyAnimal.jpg' ?>"></li>
+			<img style="width:100%;" src="<?= ROOT . '/web/img/gifs/partyAnimal.gif' ?>"></li>
 		</div>
 		<div class="col-xs-1">
-			<img style="width:100%;" src="<?= ROOT . '/web/img/4Year.jpg' ?>"></li>
+			<img style="width:100%;" src="<?= ROOT . '/web/img/gifs/4Year.gif' ?>"></li>
 		</div>
 		<div class="col-xs-3"></div>
 	</div>
