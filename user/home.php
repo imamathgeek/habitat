@@ -1,4 +1,4 @@
 <?php
-include "top.php"
+include "top.php";
 
 echo $username;
