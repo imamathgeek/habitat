@@ -100,7 +100,7 @@ if (isset($_POST["btnSubmit"])) {
   else{
    ?>
 
-   <h1 id="frmProfile">Profile</h1>
+   <h1 id="frmProfile">Sign Up</h1>
 
  
 
@@ -110,7 +110,7 @@ if (isset($_POST["btnSubmit"])) {
 
             <fieldset class="wrapper">
 
-                <h3>Please review information carefully</h3>
+                <p>Please insert your information</p>
 
                         
                         <label for="txtFirstName" class="required">First Name
@@ -241,7 +241,7 @@ if (isset($_POST["btnSubmit"])) {
 
 
                         <fieldset class="buttons">
-                            <p>Now Please take a second and consider your responses, then submit</p>
+                            <label>Submit</label>
                             <input type="submit" id="btnSubmit" name="btnSubmit" value="Save" tabindex="900" class="button">
 
                 </form>
