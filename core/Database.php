@@ -45,7 +45,7 @@ class Database {
     }
 
     private function connect($dbUserName, $dbUserPass, $dbName) {
-        $debugMe = falses;
+        $debugMe = false;
 
         $query = NULL;
 
