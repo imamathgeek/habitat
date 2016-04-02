@@ -44,7 +44,7 @@ class Database {
         $this->connect($dbUserName, $whichPass, $dbName);
     }
 
-    private function connect($dbUserName, $bdUserPass, $dbName) {
+    private function connect($dbUserName, $dbUserPass, $dbName) {
         $debugMe = false;
 
         $query = NULL;
@@ -54,7 +54,7 @@ class Database {
         if ($debugMe) {
             print "<p>Username: " . $dbUserName;
             print "<p>DSN: " . $dsn . $dbName;
-            print "<p>PW: " . $whichPass;
+            print "<p>PW: " . $dbUserPass;
         }
 
         try {
