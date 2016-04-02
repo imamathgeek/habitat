@@ -2,6 +2,7 @@
 <?php
 
 include "../top.php";
+include "../nav.php";
 include "../lib/validation-functions.php";
 
 $array = array($username);

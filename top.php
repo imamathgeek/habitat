@@ -25,7 +25,8 @@ define("ROOT", $address);
         <script src="//html5shim.googlecode.com/sin/trunk/html5.js"></script>
         <![endif]-->
 
-        <link rel="stylesheet" href="<?= ROOT . '/style.css' ?>" type="text/css" media="screen">
+        <img src="logo.jpg" alt="logo" width="400">
+        <link rel="stylesheet" href="style.css" type="text/css" media="screen">
 
         <?php
         $debug = false;
@@ -137,5 +138,5 @@ define("ROOT", $address);
     <?php
     print '<body id="' . $path_parts['filename'] . '">';
     // include "header.php";
-    include "nav.php";
+    
     ?>

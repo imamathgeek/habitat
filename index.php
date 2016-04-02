@@ -240,8 +240,9 @@ if (isset($_POST["btnSubmit"])) {
 
 
 
-<<<<<<< HEAD
+
 <article id="main">
+  
     <p id="description">Looking for your prefect roommate? Look no further! Habitat has you covered! Find other students at UVM who exhibit similar behaviors to yourself and find your perfect home - your habitat.</p>
     <form action="<?php print $phpSelf; ?>"
           method="post"
