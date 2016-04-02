@@ -1,3 +1,3 @@
 <header >
-	<img src="<?= ROOT . '/web/img/logoFinal.jpg'; ?>">
+	<img src="<?= ROOT . '/web/img/gifs/logoFinal.gif'; ?>">
 </header>

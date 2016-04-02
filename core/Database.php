@@ -250,6 +250,11 @@ class Database {
         return $status;
     }
 
+    public function insertPerson($values)
+    {
+        $query = "INSERT INTO tblMatches ()";
+    }
+
     // #########################################################################
     // Used the get the value of the autonumber primary key on the last insert
     // sql statement you just performed
@@ -413,8 +418,10 @@ class Database {
 
         $match_ids = array();
         foreach ($matches as $match) {
-            $match_ids[] = $match['pmkId'];
+            $match_ids[] = $match['fnkSwipeeId'];
         }
+
+        print_r($match_ids);
 
         $diff = array_diff($ids, $match_ids);
 
