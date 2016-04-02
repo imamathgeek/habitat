@@ -372,7 +372,37 @@ class Database {
 
     public function selectStrangersbyNetId($net_id)
     {
+        $users = $this->selectAllUsers();
 
+        $ids = array();
+        foreach ($users as $user) {
+            if ($user['fldUsername'] !== $net_id) {
+                $ids[] = $user['pmkId'];
+            }
+        }
+        
+        $query = "SELECT * FROM tblMatches ";
+        $query.= "INNER JOIN tblPerson ON pmkId = fnkSwiperId ";
+        $query.= "WHERE fldUsername = " . "'" . $net_id . "'" ;
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        $matches = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $match_ids = array();
+        foreach ($matches as $match) {
+            $match_ids[] = $match['pmkId'];
+        }
+
+        $diff = array_diff($ids, $match_ids);
+
+        $query = "SELECT * FROM tblPerson ";
+        $query.= "WHERE pmkId IN (" . rtrim(implode($diff, ", "), ", ") . ") ";
+
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        $strangers = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $strangers;
     }
 
     public function selectStrangersBy($values)
