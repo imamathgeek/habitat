@@ -45,8 +45,6 @@ class Database {
     }
 
     private function connect($dbUserName, $bdUserPass, $dbName) {
-        require("pass.php");
-
         $debugMe = false;
 
         $query = NULL;

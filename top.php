@@ -110,6 +110,7 @@ require_once('lib/custom-functions.php');
         
         $dbUserName = "edzwonar_admin";
         $whichPass = "qfBhlGQ56O3w";
+        $dbName = "EDZWONAR_habitat";
         $db = new Database($dbUserName, $whichPass, $dbName);
 
         print_r($db);
