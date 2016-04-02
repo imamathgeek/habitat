@@ -16,10 +16,13 @@ require_once('lib/custom-functions.php');
         <script src="//html5shim.googlecode.com/sin/trunk/html5.js"></script>
         <![endif]-->
 
-        <link rel="stylesheet" href="css/base.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="style.css" type="text/css" media="screen">
 
         <?php
         $debug = false;
+        ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
 
         // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
         //
@@ -115,8 +118,7 @@ require_once('lib/custom-functions.php');
         $dbName = "EDZWONAR_habitat";
         $db = new Database($dbUserName, $whichPass, $dbName);
 
-        $person = $db->select("tblPerson", array("fldFirstName" => "Emilie"));
-        print_r($person);
+        $username = $_SERVER["REMOTE_USER"];
         ?>	
 
     </head>

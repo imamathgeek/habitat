@@ -1,36 +1,22 @@
 <?php
 include "top.php";
+
+$firstNameERROR = false;
+$lastNameERROR = false;
+$emailERROR = false;
+$usernameERROR = false;
+
+$gender = "Male";
+$pmkID = -1;
+$firstName = "Shizzy";
+$lastName = "Shay";
+$email = "something@uvm.edu";
+$username = "something else";
+
 ?>
 
 <article id="main">
-    <?php
-    
-    if (isset($_POST["btnSubmit"]) && !$errorMsg) {
-        if ($debug)
-            print "<p>Form is valid</p>";
-        // If its the first time coming to the form or there are errors we are going
-        // to display the form.
-        
 
-        if (!$mailed) {
-            print "<p> Im sorry something went wrong. Try again later </p> ";
-        }
-
-        print "<h1> Thank you for signing up, Hope you enjoy.</h1>";
-
-    } else if ($errorMsg) {
-        print '<div id="errors">';
-        print "<ul>\n";
-        foreach ($errorMsg as $err) {
-            print "<li>" . $err . "</li>\n";
-        }
-        print "</ul>\n";
-        print '</div>';
-    }
-    
-    if (!isset($_POST["btnSubmit"]) || $errorMsg) {
-    
-    ?>
         <form action="<?php print $phpSelf; ?>"
               method="post"
               id="frmRegister">
@@ -46,7 +32,7 @@ include "top.php";
                     <input type="text" id="txtFirstName" name="txtFirstName"
                            value="<?php print $firstName; ?>"
                            tabindex="100"  maxlength="45" placeholder="Enter your first name"
-                           <?php if ($firstNameERROR) print 'class="mistake"'; ?>
+                          <?php if ($firstNameERROR) print 'class="mistake"'; ?>
                            onfocus="this.select()"
                            autofocus>
                 </label>
@@ -108,7 +94,7 @@ include "top.php";
              <fieldset class="contact">
                 <label for="txtUserName" class="required"> Username
                     <input type="text" id="txtUserName" name="txtUserName"
-                           value="<?php print $username1; ?>"
+                           value="<?php print $username; ?>"
                            tabindex="100"  maxlength="45" placeholder="Enter your username"
                            <?php if ($usernameERROR) print 'class="mistake"'; ?>
                            onfocus="this.select()"
@@ -125,16 +111,10 @@ include "top.php";
             </fieldset> <!-- ends buttons -->
             <!-- Ends Wrapper -->
         </form>
-        <?php
-    }// end body submit
-    ?>
+    
 
 
 </article>
 
-<?php
-include "footer.php";
-if ($debug)
-    print "<p>END OF PROCESSING</p>";
-?>
-
+</body>
+</html>
