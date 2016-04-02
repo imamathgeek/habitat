@@ -22,7 +22,7 @@ $stranger = $strangers[0];
 <div class="text-center">
 	<div>
 		<h3><?= $stranger['fldFirstName'] . " " . $stranger['fldLastName']; ?></h3>
-		<img src="<?= ROOT . '/web/img/gifs/defaultProPic.gif'; ?>" />
+		<img class="prof-pic" src="<?= ROOT . '/web/img/gifs/defaultProPic.gif'; ?>" />
 	</div>
 	<div class="row">
 		<div class="col-xs-3"></div>
