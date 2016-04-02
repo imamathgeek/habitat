@@ -1,7 +1,9 @@
+<?php
+include "top.php";
+?>
 
 <article id="main">
     <?php
-    include top.php;
     
     if (isset($_POST["btnSubmit"]) && !$errorMsg) {
         if ($debug)
@@ -27,10 +29,8 @@
     }
     
     if (!isset($_POST["btnSubmit"]) || $errorMsg) {
-        ?>
     
-    
-
+    ?>
         <form action="<?php print $phpSelf; ?>"
               method="post"
               id="frmRegister">
@@ -128,4 +128,14 @@
         <?php
     }// end body submit
     ?>
+<<<<<<< HEAD
 </article>
+=======
+</article>
+
+<?php
+include "footer.php";
+if ($debug)
+    print "<p>END OF PROCESSING</p>";
+?>
+>>>>>>> 27f44f14236ecf7342966bd7b1bbd76b10b1c351

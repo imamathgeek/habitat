@@ -44,22 +44,10 @@ class Database {
         $this->connect($dbUserName, $whichPass, $dbName);
     }
 
-    private function connect($dbUserName, $whichPass, $dbName) {
+    private function connect($dbUserName, $bdUserPass, $dbName) {
         require("pass.php");
 
         $debugMe = false;
-
-        switch ($whichPass) {
-            case "a":
-                $dbUserPass = $dbAdmin;
-                break;
-            case "r":
-                $dbUserPass = $dbReader;
-                break;
-            case "w":
-                $dbUserPass = $dbWriter;
-                break;
-        }
 
         $query = NULL;
 
@@ -322,6 +310,12 @@ class Database {
     //
     public function select($query, $values = "", $wheres = 1, $conditions = 0, $quotes = 0, $symbols = 0, $spacesAllowed = false, $semiColonAllowed = false) {
 
+        $query = "SELECT *
+                    FROM :table
+                    WHERE";
+
+        foreach($)
+
         if ($wheres != $this->countWhere($query)) {
             return "";
         }
@@ -356,6 +350,8 @@ class Database {
 
         return $recordSet;
     }
+
+    public function selectAll
 
     // #########################################################################
     public function testquery($query, $values = "", $wheres = 0, $conditions = 0, $quotes = 0, $symbols = 0, $spacesAllowed = false, $semiColonAllowed = false) {

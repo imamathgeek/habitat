@@ -108,9 +108,11 @@ require_once('lib/custom-functions.php');
         // Set up database connection
         //
         
-        $dbUserName = "jsiebert_admin";
-        $whichPass = "password";
+        $dbUserName = "edzwonar_admin";
+        $whichPass = "qfBhlGQ56O3w";
         $db = new Database($dbUserName, $whichPass, $dbName);
+
+        print_r($db);
         ?>	
 
     </head>
