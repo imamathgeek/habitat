@@ -191,7 +191,7 @@ if (isset($_POST["btnSubmit"])) {
                                        name="radGender" 
                                        value="Male"
                                        <?php if ($gender == "Male" || $gender == "male") print 'checked' ?>
-                                       tabindex="330">Male
+                                       tabindex="330"> <img id="imgMale" src="web/img/gifs/male.gif" width="55" height="55" onclick="RadioClicked('radGenderField', 'radGender','frmRegister')" style="cursor:pointer;">
                             </label>
 
                             <label>
@@ -201,7 +201,7 @@ if (isset($_POST["btnSubmit"])) {
                                        name="radGender" 
                                        value="Female"
                                        <?php if ($gender == "Female" || $gender == "female") print 'checked' ?>
-                                       tabindex="340">Female
+                                       tabindex="340"> <img id="imgFemale" src="web/img/gifs/female.gif" width="55" height="55" onclick="RadioClicked('radGenderField', 'radGender','frmRegister')" style="cursor:pointer;">
                             </label>
 
                             <label>
@@ -211,7 +211,7 @@ if (isset($_POST["btnSubmit"])) {
                                        name="radGender" 
                                        value="Other"
                                        <?php if ($gender == "Other" or $gender == "other") print 'checked' ?>
-                                       tabindex="330">Other
+                                       tabindex="330"> <img id="imgFemale" src="web/img/gifs/otherGender.gif" width="55" height="55" onclick="RadioClicked('radGenderField', 'radGender','frmRegister')" style="cursor:pointer;">
                             </label>
 
                         </fieldset>
