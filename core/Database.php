@@ -311,13 +311,14 @@ class Database {
         $query = "SELECT * FROM " . $table . " WHERE ";
 
         foreach ($values as $key => $value) {
-            $query .= $key . " = " . $value . " AND ";
+            $query .= $key . " = ";
+            $query .= (is_int($value) ? $value : "'".$value."'")  . " AND ";
         }
-        error_log($query);
         $query = rtrim($query, " AND ");
+        error_log($query);
         $statement = $this->db->prepare($query);
         $statement->execute();
-        $results = $statement->fetchAll();
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         error_log(print_r($results, 1));
         if (empty($results)) {
             return false;
