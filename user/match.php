@@ -19,6 +19,7 @@ $matches = $db->selectMatchesByNetId($username);
             <th>Gender</th>
             <th>Year</th>
             <th>On/Off Campus?</th>
+            <th>Email</th>
         </tr>
     </thead>
 <?php if (!empty($matches)): ?>
@@ -28,7 +29,8 @@ $matches = $db->selectMatchesByNetId($username);
             <td><?= $match['fldFirstName'] . " " . $match['fldLastName']; ?></td>
             <td><?= $match['fldGender']; ?></td>
             <td><?= $match['fldYear']; ?></td>
-            <td>Unknown</td>
+            <td><?= $match['fldOnCampus'] ? "On" : "Off"; ?></td>
+            <td><a href="mailto:<?= $match['fldEmail']; ?>">Email</a></td>
         </tr>
     <?php endforeach; ?>
     </tbody>

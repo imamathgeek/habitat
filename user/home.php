@@ -52,7 +52,7 @@ $stranger = $strangers[0];
 			<input type="hidden" id="hidUserId" name="hidUserId" value="<?php print $stranger['pmkId']; ?>" />
 			<input type="submit" id="btnNo" name="btnNo" value="Nah" class="button">
 		</form>
-		<a>View Profile</a>
+		<a href="account.php?id=<?= $stranger['pmkId']; ?>">View Profile</a>
 		<form action="<?php print $phpSelf; ?>" method="post" id="frmMatch">
 			<input type="hidden" id="hidUserId" name="hidUserId" value="<?php print $stranger['pmkId']; ?>" />
 			<input type="submit" id="btnYes" name="btnYes" value="Yes" class="button">

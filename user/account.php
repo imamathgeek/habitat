@@ -5,14 +5,11 @@ include "../top.php";
 include "../nav.php";
 include "../lib/validation-functions.php";
 
-$array = array($username);
+$array = array('fldUsername' => $username);
 $person = $db->select('tblPerson', $array);
-
 
 // Initialize variables one for each form element
 // in the order they appear on the form
-//include "top.php";
-print'<html>';
 
 $firstName = $person['fldFirstName'];
 $lastName = $person['fldLastName'];
@@ -133,7 +130,7 @@ if (isset($_POST["btnSubmit"])) {
 ?>
     <form action="<?php print $phpSelf; ?>"
               method="post"
-              id="frmRegister">
+              id="frmAccount">
 
             <fieldset class="wrapper">
 
@@ -317,6 +314,13 @@ if (isset($_POST["btnSubmit"])) {
                 
                 <?php }
                 else {
+
+                  if(!empty($_GET))
+                  {
+                    if (isset($_GET['id'])){
+                      $person = $db->selectUserById($_GET['id']);
+                    }
+                  }
                 
                 	print '<p>Name: '.$person['fldFirstName'].' '.$person['fldLastName'].'</p>';
                 	print '<p>Gender: '.$person['fldGender'].'</p>';
@@ -329,7 +333,32 @@ if (isset($_POST["btnSubmit"])) {
                 	else{
                 		print "Off";
                     }
-                	
+                  
+                ?>
+              <div class="row">
+                <div class="col-xs-3"></div>
+                <div class="col-xs-1">
+                  <img style="width:100%;" src="<?= ROOT . '/web/img/gifs/' . ($person['fldMorningPerson'] ? 'earlyBird.gif' : 'nightOwl.gif'); ?>"></li>
+                </div>
+                <div class="col-xs-1">
+                  <img style="width:100%;" src="<?= ROOT . '/web/img/gifs/' . ($person['fldTobacco'] ? 'cigarette.gif' : 'nonSmoker.gif'); ?>"></li>
+                </div>
+                <?php if ($person['fldMaryJane']): ?>
+                <div class="col-xs-1">
+                  <img style="width:100%;" src="<?= ROOT . '/web/img/gifs/pot.gif'; ?>"></li>
+                </div>
+                <?php endif; ?>
+                <div class="col-xs-1">
+                  <img style="width:100%;" src="<?= ROOT . '/web/img/gifs/' . ($person['fldPartyAnimal'] ? 'partyAnimal.gif' : 'bookWorm.gif'); ?>"></li>
+                </div>
+                <?php if ($person['fldYear'] < 4): ?>
+                <div class="col-xs-1">
+                  <img style="width:100%;" src="<?= ROOT . '/web/img/gifs/' . ($person['fldYear'] . 'Year.gif'); ?>"></li>
+                </div>
+                <?php endif; ?>
+                <div class="col-xs-3"></div>
+              </div>
+                	<?
                 
                 }
                 

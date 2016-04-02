@@ -371,6 +371,16 @@ class Database {
         return $results;
     }
 
+    public function selectUserById($user_id)
+    {
+        $query = "SELECT * FROM tblPerson WHERE pmkId = " . $user_id ;
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result[0];
+    }
+
     public function selectIdByNetId($username)
     {
         $query = "SELECT pmkId FROM tblPerson WHERE fldUsername = '" . $username . "'";

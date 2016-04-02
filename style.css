@@ -109,16 +109,15 @@ fieldset p {
     display: block;
     margin: 1em auto auto;
 }
-#radGenderFemale {
-    display: none;
-}
-#radGenderOther {
-    display: none;
-}
-#radGenderMale {
-    display: none;
-}
 
 .prof-pic {
     width:400px;
+}
+
+#frmAccount img {
+    width:200px;
+}
+
+img { 
+    display: block; margin:auto
 }
