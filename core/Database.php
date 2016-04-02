@@ -308,9 +308,7 @@ class Database {
     //
     public function select($table, $values) {
 
-        $query = "SELECT *
-                    FROM :table
-                    WHERE ";
+        $query = "SELECT * FROM " . $table . " WHERE ";
 
         foreach ($values as $key => $value) {
             $query .= $key . " = " . $value . " AND ";
@@ -320,7 +318,6 @@ class Database {
         $statement = $this->db->prepare($query);
 
         $statement->bindParam(":table", $table);
-        error_log(print_r($statement, 1));
         $statement->execute();
         $results = $statement->fetchAll();
 
