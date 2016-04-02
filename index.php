@@ -1,12 +1,12 @@
 <?php
 include "top.php";
+include "/lib/validation-functions.php";
 
 $firstNameERROR = false;
 $lastNameERROR = false;
 $emailERROR = false;
 $usernameERROR = false;
 $contentERROR = false; 
-
 $gender = "Male";
 $pmkID = -1;
 $firstName = "Shizzy";
@@ -15,7 +15,56 @@ $email = "something@uvm.edu";
 $username = "something else";
 $year = "Freshman";
 $content = "Soda is secretly good for you....shh!, (it's a secret)";
+
+$errorMsg = array();
+
+
+
+if ($firstName == " ") {
+
+        $errorMsg[] = "Please enter your first name";
+        $firstNameERROR = true;
+    } elseif (!verifyAlphaNum($firstName)) {
+        $errorMsg[] = "Your first name appears to have extra character.";
+        $firstNameERROR = true;
+    }
+
+    
+    if ($lastName == "") {
+        $errorMsg[] = "Please enter your last name";
+        $lastNameERROR = true;
+    } elseif (!verifyAlphaNum($lastName)) {
+        $errorMsg[] = "Your last name appears to have extra character.";
+        $lastNameERROR = true;
+    }
+
+    if ($email == "") {
+        $errorMsg[] = "Please enter your email address";
+        $emailERROR = true;
+    } elseif (!verifyEmail($email)) {
+        $errorMsg[] = "Your email address appears to be incorrect.";
+        $emailERROR = true;
+    }
+
+
+    if ($year = ""){
+        $errorMsg[]= "Please enter what year you are in at UVM.";
+        $yearERROR = true;
+    }
+
+    if ($username == "") {
+        $errorMsg[] = "Please enter your username";
+        $usernameERROR = true;
+    } elseif (!verifyAlphaNum($username)) {
+        $errorMsg[] = "Your first name appears to have extra character.";
+        $usernameERROR = true;
+    }
+
+
 ?>
+
+
+
 
 <article id="main">
     <form action="<?php print $phpSelf; ?>"

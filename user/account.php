@@ -4,7 +4,9 @@
 include "../top.php";
 include "../lib/validation-functions.php";
 
-$person = $db->select('tblPerson', $username);
+$array = array($username);
+$person = $db->select('tblPerson', $array);
+
 
 // Initialize variables one for each form element
 // in the order they appear on the form
@@ -14,9 +16,10 @@ print'<html>';
 $firstName = "Jack";
 $lastName = "Steffens";
 $email = "jsteffen@uvm.edu";
-$year = "2017";
-$bio = "Suh duuu";
-$gender = "Male";
+$year = $person['fldYear'];
+$bio = $person['fldBio'];
+$onOff = $person['fldOnCampus'];
+$gender = $person['fldGender'];
 
 // Initialize Error Flags one for each form element we validate
 // in the order they appear in section 1c.
@@ -37,12 +40,18 @@ if (isset($_POST["btnSubmit"])) {
 
 
     // Collect field data
-   
-    $dataRecord[] = $lastName;
+    $firstName = htmlentities($_POST["txtFirstName"], ENT_QUOTES, "UTF-8");
+    $lastName =  htmlentities($_POST["txtLastName"], ENT_QUOTES, "UTF-8");
+    $email = filter_var($_POST["txtEmail"], FILTER_SANITIZE_EMAIL);
+    $gender = htmlentities($_POST["radGender"], ENT_QUOTES, "UTF-8");
+    // $year = 
+    $bio = htmlentities($_POST["txtBio"], ENT_QUOTES, "UTF-8");
+    
     $dataRecord[] = $firstName;
+    $dataRecord[] = $lastName;
     $dataRecord[] = $email;
     $dataRecord[] = $gender;
-    $dataRecord[] = $year;
+   // $dataRecord[] = $year;
     $dataRecord[] = $bio;
 
     // Validation
@@ -73,8 +82,8 @@ if (isset($_POST["btnSubmit"])) {
     }
 
 
-    if ($year = ""){
-        $errorMsg[]= "Please enter what year you are in at UVM.";
+    if (($year = "") | ($year < 1)){
+        $errorMsg[]= "Please enter what year you are in at UVM.(Integer with a value of at least 1)";
         $yearERROR = true;
     }
 
@@ -128,7 +137,7 @@ if (isset($_POST["btnSubmit"])) {
                         <label for="txtFirstName" class="required">First Name
 
                             <input type="text" id="txtFirstName" name="txtFirstName"
-                                 
+                                 value="<?php print $person['fldFirstName'];?>"
                                    tabindex="100" maxlength="35" placeholder="First Name"
                                    <?php if ($firstNameERROR) print 'class="mistake"'; ?>
                                    onfocus="this.select()"
@@ -139,7 +148,7 @@ if (isset($_POST["btnSubmit"])) {
                         <label for="txtLastName" class="required">  Last Name
 
                             <input type="text" id="txtLastName" name="txtLastName"
-                                  
+                                  value="<?php print $person['fldLastName'];?>"
                                    tabindex="100" maxlength="35" placeholder="Enter your first name"
                                    <?php if ($lastNameERROR) print 'class="mistake"'; ?>
                                    onfocus="this.select()"
@@ -153,14 +162,50 @@ if (isset($_POST["btnSubmit"])) {
                             <label id="txtEmail" for="txtEmail" class="required">Email
 
                             <input type="text" id="txtEmail" name="txtEmail"
-                                   
+                                   value="<?php print $person['fldEmail'];?>"
                                    tabindex="120" maxlength="120" placeholder="Enter valid email"
                                    <?php if ($emailERROR) print 'class="mistake"'; ?>
                                    onfocus="this.select()" 
                                    autofocus>
                             </label>
 
+                            <label for="intYear" class="required">Year
+
+                             <input type="number" id="intYear" name="intYear"
+                   
+                                  tabindex="100" maxlength="35" placeholder="Year"
+                                <?php if ($yearERROR) print 'class="mistake"'; ?>
+                                  onfocus="this.select()"
+                                  autofocus>
+                             </label> 
+
               <br><br>
+
+              <fieldset class="radio">                          
+
+                            <legend>On/Off Campus</legend>
+
+                            <label>
+
+                                <input type="radio" 
+                                       id="radOnCampus" 
+                                       name="radOnOffCampus" 
+                                       value="On"
+                                       <?php if ($onOff == 1) print 'checked' ?>
+                                       tabindex="330">On
+                            </label>
+
+                            <label>
+
+                                <input type="radio" 
+                                       id="radOffCampus" 
+                                       name="radOnOffCampus" 
+                                       value="Off"
+                                       <?php if ($onOff == 0) print 'checked' ?>
+                                       tabindex="340">Off
+                            </label>
+
+                        </fieldset>
 
                         <br><br>
                         <fieldset class="radio">                          
@@ -173,7 +218,7 @@ if (isset($_POST["btnSubmit"])) {
                                        id="radGenderMale" 
                                        name="radGender" 
                                        value="Male"
-                                       <?php if ($gender == "Male") print 'checked' ?>
+                                       <?php if ($gender == "Male" || $gender == "male") print 'checked' ?>
                                        tabindex="330">Male
                             </label>
 
@@ -183,7 +228,7 @@ if (isset($_POST["btnSubmit"])) {
                                        id="radGenderFemale" 
                                        name="radGender" 
                                        value="Female"
-                                       <?php if ($gender == "Female") print 'checked' ?>
+                                       <?php if ($gender == "Female" || $gender == "female") print 'checked' ?>
                                        tabindex="340">Female
                             </label>
 
@@ -193,7 +238,7 @@ if (isset($_POST["btnSubmit"])) {
                                        id="radGenderOther" 
                                        name="radGender" 
                                        value="Other"
-                                       <?php if ($gender == "Other") print 'checked' ?>
+                                       <?php if ($gender == "Other" or $gender == "other") print 'checked' ?>
                                        tabindex="330">Other
                             </label>
 
@@ -206,6 +251,7 @@ if (isset($_POST["btnSubmit"])) {
                             <textarea id="txtBio" 
                                       name="txtBio" 
                                       tabindex="200"
+                                      value="<?php print $person['fldBio'];?>"
                                       <?php if ($emailERROR) print 'class="mistake"'; ?>
                                       onfocus="this.select()" 
                                       style="width: 25em; height: 4em;" ><?php print $bio; ?>
