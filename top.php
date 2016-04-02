@@ -20,6 +20,9 @@ require_once('lib/custom-functions.php');
 
         <?php
         $debug = false;
+        ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
 
         // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
         //
@@ -33,15 +36,15 @@ require_once('lib/custom-functions.php');
         //     www-root
         
         
-        $includeDBPath = "../bin/";
-        $includeLibPath = "../lib/";
+        $includeCorePath = "core/";
+        $includeLibPath = "lib/";
         
         
-        require_once('lib/mailMessage.php');
+        // require_once('lib/mailMessage.php');
 
-        require_once('lib/security.php');
+        // require_once('lib/security.php');
         
-        require_once($includeDBPath . 'Database.php');
+        require_once($includeCorePath . 'Database.php');
         
         // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
         //
@@ -108,11 +111,15 @@ require_once('lib/custom-functions.php');
         // Set up database connection
         //
         
+        $username = 
+
         $dbUserName = "edzwonar_admin";
         $whichPass = "qfBhlGQ56O3w";
+        $dbName = "EDZWONAR_habitat";
         $db = new Database($dbUserName, $whichPass, $dbName);
 
-        print_r($db);
+        $person = $db->select("tblPerson", array("fldFirstName" => "Emilie"));
+        print_r($person);
         ?>	
 
     </head>
@@ -120,6 +127,6 @@ require_once('lib/custom-functions.php');
     <!-- **********************     Body section      ********************** -->
     <?php
     print '<body id="' . $path_parts['filename'] . '">';
-    include "header.php";
+    // include "header.php";
     include "nav.php";
     ?>

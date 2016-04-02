@@ -44,9 +44,7 @@ class Database {
         $this->connect($dbUserName, $whichPass, $dbName);
     }
 
-    private function connect($dbUserName, $bdUserPass, $dbName) {
-        require("pass.php");
-
+    private function connect($dbUserName, $dbUserPass, $dbName) {
         $debugMe = false;
 
         $query = NULL;
@@ -56,7 +54,7 @@ class Database {
         if ($debugMe) {
             print "<p>Username: " . $dbUserName;
             print "<p>DSN: " . $dsn . $dbName;
-            print "<p>PW: " . $whichPass;
+            print "<p>PW: " . $dbUserPass;
         }
 
         try {
@@ -308,50 +306,28 @@ class Database {
     //  $spacesAllowed are %20 and not a blank space
     //  $semiColonAllowed is ; and generally you do not have them in your query
     //
-    public function select($query, $values = "", $wheres = 1, $conditions = 0, $quotes = 0, $symbols = 0, $spacesAllowed = false, $semiColonAllowed = false) {
+    public function select($table, $values) {
 
-        $query = "SELECT *
-                    FROM :table
-                    WHERE";
+        $query = "SELECT * FROM " . $table . " WHERE ";
 
-        foreach($)
-
-        if ($wheres != $this->countWhere($query)) {
-            return "";
+        foreach ($values as $key => $value) {
+            $query .= $key . " = ";
+            $query .= (is_int($value) ? $value : "'".$value."'")  . " AND ";
         }
-
-        if ($conditions != $this->countConditions($query)) {
-            return "";
-        }
-
-        if ($quotes != $this->countQuotes($query)) {
-            return "";
-        }
-
-        if ($symbols != $this->countSymbols($query)) {
-            return "";
-        }
-
-        if ($quotes == 0 AND $symbols == 0) {
-            $query = $this->sanitizeQuery($query, $spacesAllowed, $semiColonAllowed);
-        }
-
+        $query = rtrim($query, " AND ");
+        error_log($query);
         $statement = $this->db->prepare($query);
-
-        if (is_array($values)) {
-            $statement->execute($values);
+        $statement->execute();
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        error_log(print_r($results, 1));
+        if (empty($results)) {
+            return false;
         } else {
-            $statement->execute();
+            return $results[0];
         }
-
-        $recordSet = $statement->fetchAll();
-
-        $statement->closeCursor();
-
-        return $recordSet;
     }
 
-    public function selectAll
+    // public function selectAll
 
     // #########################################################################
     public function testquery($query, $values = "", $wheres = 0, $conditions = 0, $quotes = 0, $symbols = 0, $spacesAllowed = false, $semiColonAllowed = false) {
