@@ -33,7 +33,7 @@ require_once('lib/custom-functions.php');
         //     www-root
         
         
-        $includeDBPath = "/bin/";
+        $includeCorePath = "/core/";
         $includeLibPath = "/lib/";
         
         
@@ -41,7 +41,7 @@ require_once('lib/custom-functions.php');
 
         // require_once('lib/security.php');
         
-        require_once($includeDBPath . 'Database.php');
+        require_once($includeCorePath . 'Database.php');
         
         // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
         //
