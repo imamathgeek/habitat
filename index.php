@@ -12,7 +12,7 @@ $firstName = "Shizzy";
 $lastName = "Shay";
 $email = "something@uvm.edu";
 $username = "something else";
-
+$year = "Freshman";
 ?>
 
 <article id="main">
@@ -61,6 +61,32 @@ $username = "something else";
                        onfocus="this.select()" >
 
             </fieldset>
+
+            <fieldset class="wrapper">
+            <legend>Year</legend>
+
+
+            <fieldset  class="lists">
+                <label for="lstDesc"> Type</label>
+                <select id="lstDesc" 
+                        name="lstDesc" 
+                        tabindex="520" >
+                    <option <?php if ($year == "Freshman") print " selected "; ?>
+                        value="Freshman"> Freshman </option>
+
+                    <option <?php if ($year == "Sophmore") print " selected "; ?>
+                        value="Sophmore"> Sophmore </option>
+
+                    <option <?php if ($year == "Junior") print " selected "; ?>
+                        value="Junior"> Junior </option>
+
+                    <option <?php if ($year == "Senior") print " selected "; ?>
+                        value="Senior"> Senior </option>
+
+                </select>
+            </fieldset>
+
+
             
              <!-- gender -->
             <fieldset class="radio">
