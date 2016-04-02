@@ -1,0 +1,6 @@
+table_name: person
+registry:
+  - swiper_id: { type:int, allow_null:false }
+  - swipee_id: { type:int, allow_null:false }
+  - created_at
+  - is_match: { type: boolean, allow_null: false }
