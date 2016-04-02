@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -8,14 +7,9 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        
-        <title>Try me page </title>
+        <title></title>
     </head>
     <body>
-        <p>
-        <?php
-       print "Soda is actually good for you, secretly...shh! No"
-        ?>
-        </p>
+        <h1>Match Page</h1>
     </body>
 </html>
