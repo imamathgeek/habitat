@@ -252,7 +252,19 @@ class Database {
 
     public function insertPerson($values)
     {
-        $query = "INSERT INTO tblMatches ()";
+        $net_id = rtrim($values['txtEmail'], "@uvm.edu");
+        $person = SelectIdByNetId($net_id);
+
+        if (!empty($person))
+            return false;
+        
+        $query = "INSERT INTO tblPerson (fldUsername, fldFirstName, fldLastName, fldEmail, fldYear, fldOnCampus, fldGender, fldBio) ";
+        $query.= "VALUES ('" . $net_id . "', '" . $_POST['txtFirstName'] . "', '" . $_POST['txtLastName'] . "', '" . $_POST['txtEmail'] . "', " . $_POST['intYear'] . ", " . ($_POST['radOnOffCampus'] === "Off" ? 0 : 1) . ', "' . $_POST['radGender'] . '", "' . $_POST['txtBio'] . '")';
+        echo $query;
+        $statement = $this->db->prepare($query);
+        $status = $statement->execute();
+
+        return $status;
     }
 
     // #########################################################################

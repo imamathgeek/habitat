@@ -27,20 +27,24 @@ $stranger = $strangers[0];
 	<div class="row">
 		<div class="col-xs-3"></div>
 		<div class="col-xs-1">
-			<img style="width:100%;" src="<?= ROOT . '/web/img/gifs/earlyBird.gif' ?>"></li>
+			<img style="width:100%;" src="<?= ROOT . '/web/img/gifs/' . ($stranger['fldMorningPerson'] ? 'earlyBird.gif' : 'nightOwl.gif'); ?>"></li>
 		</div>
 		<div class="col-xs-1">
-			<img style="width:100%;" src="<?= ROOT . '/web/img/gifs/nonSmoker.gif' ?>"></li>
+			<img style="width:100%;" src="<?= ROOT . '/web/img/gifs/' . ($stranger['fldTobacco'] ? 'cigarette.gif' : 'nonSmoker.gif'); ?>"></li>
 		</div>
+		<?php if ($stranger['fldMaryJane']): ?>
 		<div class="col-xs-1">
-			<img style="width:100%;" src="<?= ROOT . '/web/img/gifs/pot.gif' ?>"></li>
+			<img style="width:100%;" src="<?= ROOT . '/web/img/gifs/pot.gif'; ?>"></li>
 		</div>
+		<?php endif; ?>
 		<div class="col-xs-1">
-			<img style="width:100%;" src="<?= ROOT . '/web/img/gifs/partyAnimal.gif' ?>"></li>
+			<img style="width:100%;" src="<?= ROOT . '/web/img/gifs/' . ($stranger['fldPartyAnimal'] ? 'partyAnimal.gif' : 'bookWorm.gif'); ?>"></li>
 		</div>
+		<?php if ($stranger['fldYear'] < 4): ?>
 		<div class="col-xs-1">
-			<img style="width:100%;" src="<?= ROOT . '/web/img/gifs/4Year.gif' ?>"></li>
+			<img style="width:100%;" src="<?= ROOT . '/web/img/gifs/' . ($stranger['fldYear'] . 'Year.gif'); ?>"></li>
 		</div>
+		<?php endif; ?>
 		<div class="col-xs-3"></div>
 	</div>
 	<div>

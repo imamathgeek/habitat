@@ -2,8 +2,7 @@
 <?php
 include "top.php";
 include "lib/validation-functions.php";
-$array = array($username);
-$person = $db->select('tblPerson', $array);
+
 // Initialize variables one for each form element
 // in the order they appear on the form
 //include "top.php";
@@ -11,10 +10,10 @@ print'<html>';
 $firstName = "";
 $lastName = "";
 $email = "@uvm.edu";
-$year = $person['fldYear'];
-$bio = $person['fldBio'];
-$onOff = $person['fldOnCampus'];
-$gender = $person['fldGender'];
+$year = "";
+$bio = "";
+$onOff = "";
+$gender = "";
 // Initialize Error Flags one for each form element we validate
 // in the order they appear in section 1c.
 $firstNameERROR = false;
@@ -82,21 +81,21 @@ if (isset($_POST["btnSubmit"])) {
     }
     
     
-    
   // Process form
   if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) {
-      print '<p>Your information has been updated.</p>';
-      
-      // save data to database
+    $saved = $db->insertPerson($_POST);
+    if ($saved) {
+      print '<p class="text-center">Your information has been updated.</p>';
+      print '<p class="text-center"><a href="' . ROOT . '/user/home.php">Click here to login</a></p>';
+    } else {
+      print '<p class="text-center">We cannot sign you up at this time. Please try again later.</p>';
+    }
    }
     
   else{
    ?>
 
    <h1 id="frmProfile">Sign Up</h1>
-
- 
-
     <form action="<?php print $phpSelf; ?>"
               method="post"
               id="frmRegister">
@@ -109,7 +108,7 @@ if (isset($_POST["btnSubmit"])) {
                         <label for="txtFirstName" class="required">First Name
 
                             <input type="text" id="txtFirstName" name="txtFirstName"
-                                 value="<?php print $person['fldFirstName'];?>"
+                                 value="<?php print $firstName; ?>"
                                    tabindex="100" maxlength="35" placeholder="First Name"
                                    <?php if ($firstNameERROR) print 'class="mistake"'; ?>
                                    onfocus="this.select()"
@@ -120,7 +119,7 @@ if (isset($_POST["btnSubmit"])) {
                         <label for="txtLastName" class="required">  Last Name
 
                             <input type="text" id="txtLastName" name="txtLastName"
-                                  value="<?php print $person['fldLastName'];?>"
+                                  value="<?php print $lastName; ?>"
                                    tabindex="100" maxlength="35" placeholder="Enter your first name"
                                    <?php if ($lastNameERROR) print 'class="mistake"'; ?>
                                    onfocus="this.select()"
@@ -134,7 +133,7 @@ if (isset($_POST["btnSubmit"])) {
                             <label id="txtEmail" for="txtEmail" class="required">Email
 
                             <input type="text" id="txtEmail" name="txtEmail"
-                                   value="<?php print $person['fldEmail'];?>"
+                                   value="<?php print $email; ?>"
                                    tabindex="120" maxlength="120" placeholder="Enter valid email"
                                    <?php if ($emailERROR) print 'class="mistake"'; ?>
                                    onfocus="this.select()" 
@@ -223,7 +222,7 @@ if (isset($_POST["btnSubmit"])) {
                             <textarea id="txtBio" 
                                       name="txtBio" 
                                       tabindex="200"
-                                      value="<?php print $person['fldBio'];?>"
+                                      value="<?php print $bio; ?>"
                                       <?php if ($emailERROR) print 'class="mistake"'; ?>
                                       onfocus="this.select()" 
                                       style="width: 25em; height: 4em;" ><?php print $bio; ?>
