@@ -14,19 +14,12 @@ $person = $db->select('tblPerson', $array);
 print'<html>';
 
 
-
-$firstName = "Jack";
-$lastName = "Steffens";
-$email = "jsteffen@uvm.edu";
-$year = "2017";
-$bio = "Suh duuu";
 $firstName = $person['fldFirstName'];
 $lastName = $person['fldLastName'];
 $email = $person['fldEmail'];
 $year = $person['fldYear'];
 $bio = $person['fldBio'];
 $onOff = $person['fldOnCampus'];
->>>>>>> Stashed changes
 $gender = $person['fldGender'];
 $submitted = false;
 
@@ -93,10 +86,9 @@ if (isset($_POST["btnSubmit"])) {
     }
 
 
-<<<<<<< Updated upstream
     if ($year = ""){
         $errorMsg[]= "Please enter what year you are in at UVM.";
-=======
+
   /*  if (($year = "")){
         $errorMsg[]= "Please enter what year you are in at UVM (Integer with a value of at least 1).";
 >>>>>>> Stashed changes
@@ -134,12 +126,9 @@ if (isset($_POST["btnSubmit"])) {
   
 
 
-<<<<<<< Updated upstream
-   <link rel="stylesheet" href="../style.css" type="text/css" media="screen">
-   <h1 id="frmProfile">Profile</h1>
-=======
+   print'<h1 id="frmProfile">Profile</h1>';
    ?>
->>>>>>> Stashed changes
+
 
    <h1 id="frmProfile">Account</h1>
 <h2><a href="?editId=<?php print $person['pmkId'];?>">Edit</a></h2>
@@ -192,8 +181,6 @@ if (isset($_POST["btnSubmit"])) {
                                    autofocus>
                             </label>
 
-<<<<<<< Updated upstream
-=======
                             <label for="txtYear" class="required">Year
 
                              <input type="text" id="txtYear" name="txtYear"
@@ -204,7 +191,7 @@ if (isset($_POST["btnSubmit"])) {
                                   autofocus>
                              </label> 
 
->>>>>>> Stashed changes
+
               <br><br>
 
                         <br><br>
