@@ -33,8 +33,8 @@ require_once('lib/custom-functions.php');
         //     www-root
         
         
-        $includeDBPath = "../bin/";
-        $includeLibPath = "../lib/";
+        $includeDBPath = "/bin/";
+        $includeLibPath = "/lib/";
         
         
         // require_once('lib/mailMessage.php');
