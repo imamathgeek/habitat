@@ -317,7 +317,7 @@ class Database {
         }
 
         $query = rtrim($query, " AND ");
-
+        error_log($query);
         $statement = $this->db->prepare($query);
 
         $statement->bindParam(":table", $table);
