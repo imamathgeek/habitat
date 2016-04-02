@@ -1,2 +1,3 @@
 <?php
-include "top.php";
+echo "Hello world.";
+//
