@@ -1,7 +1,7 @@
 <?php
 include("../top.php");
 
-$matches = $db->selectMatchesByNetId('edzwonar');
+$matches = $db->selectMatchesByNetId($username);
 ?>
 
 <h1>Meet Your Matches!</h1>

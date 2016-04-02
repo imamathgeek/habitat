@@ -1,6 +1,8 @@
 <?php
 include "lib/constants.php";
 require_once('lib/custom-functions.php');
+
+define("ROOT", dirname(__FILE__));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,13 +18,15 @@ require_once('lib/custom-functions.php');
         <script src="//html5shim.googlecode.com/sin/trunk/html5.js"></script>
         <![endif]-->
 
-        <link rel="stylesheet" href="style.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="<?= ROOT . '/style.css'; ?>" type="text/css" media="screen">
 
         <?php
         $debug = false;
         ini_set('display_errors', 1);
 		ini_set('display_startup_errors', 1);
 		error_reporting(E_ALL);
+
+		echo ROOT;
 
         // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
         //
@@ -110,15 +114,16 @@ require_once('lib/custom-functions.php');
         //
         // Set up database connection
         //
-        
-        $username = 
 
         $dbUserName = "edzwonar_admin";
         $whichPass = "qfBhlGQ56O3w";
         $dbName = "EDZWONAR_habitat";
         $db = new Database($dbUserName, $whichPass, $dbName);
         
-        $username = $_SERVER["REMOTE_USER"];
+        if (isset($_SERVER["REMOTE_USER"]))
+        	$username = $_SERVER["REMOTE_USER"];
+        else
+        	$username = 'edzwonar';
         ?>	
 
     </head>
