@@ -19,23 +19,39 @@ $stranger = $strangers[0];
 
 ?>
 
-<div>
+<div class="text-center">
 	<div>
 		<h3><?= $stranger['fldFirstName'] . " " . $stranger['fldLastName']; ?></h3>
 		<img src="<?= ROOT . '/web/img/defaultProPic.jpg'; ?>" />
 	</div>
-	<ul class="qualities">
-		<li><img>Time to Rise</li>
-		<li><img>Smoker</li>
-		<li><img>Year</li>
-		<li><img>Lifestyle</li>
-	</ul>
-	<form action="<?php print $phpSelf; ?>" method="post" id="frmMatch">
-		<input type="hidden" id="hidUserId" name="hidUserId" value="<?= print $stranger['pmkId']; ?>" />
-		<input type="submit" id="btnYes" name="btnYes" value="Yes" class="button">
-	</form>
-	<form action="<?php print $phpSelf; ?>" method="post" id="frmNoMatch">
-		<input type="hidden" id="hidUserId" name="hidUserId" value="<?= print $stranger['pmkId']; ?>" />
-		<input type="submit" id="btnNo" name="btnNo" value="Nah" class="button">
-	</form>
+	<div class="row">
+		<div class="col-xs-3"></div>
+		<div class="col-xs-1">
+			<img style="width:100%;" src="<?= ROOT . '/web/img/earlyBird.jpg' ?>"></li>
+		</div>
+		<div class="col-xs-1">
+			<img style="width:100%;" src="<?= ROOT . '/web/img/nonSmoker.jpg' ?>"></li>
+		</div>
+		<div class="col-xs-1">
+			<img style="width:100%;" src="<?= ROOT . '/web/img/pot.jpg' ?>"></li>
+		</div>
+		<div class="col-xs-1">
+			<img style="width:100%;" src="<?= ROOT . '/web/img/partyAnimal.jpg' ?>"></li>
+		</div>
+		<div class="col-xs-1">
+			<img style="width:100%;" src="<?= ROOT . '/web/img/4Year.jpg' ?>"></li>
+		</div>
+		<div class="col-xs-3"></div>
+	</div>
+	<div>
+		<form action="<?php print $phpSelf; ?>" method="post" id="frmNoMatch">
+			<input type="hidden" id="hidUserId" name="hidUserId" value="<?= print $stranger['pmkId']; ?>" />
+			<input type="submit" id="btnNo" name="btnNo" value="Nah" class="button">
+		</form>
+		<a>View Profile</a>
+		<form action="<?php print $phpSelf; ?>" method="post" id="frmMatch">
+			<input type="hidden" id="hidUserId" name="hidUserId" value="<?= print $stranger['pmkId']; ?>" />
+			<input type="submit" id="btnYes" name="btnYes" value="Yes" class="button">
+		</form>
+	</div>
 </div>
