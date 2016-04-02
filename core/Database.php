@@ -315,7 +315,6 @@ class Database {
             $query .= (is_int($value) ? $value : "'".$value."'")  . " AND ";
         }
         $query = rtrim($query, " AND ");
-        error_log($query);
         $statement = $this->db->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -325,6 +324,60 @@ class Database {
         } else {
             return $results[0];
         }
+    }
+
+    public function selectAll($table, $values)
+    {
+
+    }
+
+    public function selectAllUsers()
+    {
+        $query = "SELECT * FROM tblPerson";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $results;
+    }
+
+    public function selectMatchesByNetId($net_id)
+    {
+        $query = "SELECT * FROM tblMatches ";
+        $query.= "INNER JOIN tblPerson ON pmkId = fnkSwiperId ";
+        $query.= "WHERE fldUsername = " . "'" . $net_id . "'" ;
+        $query.= "AND fldMatched = 1";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $user_id = $results[0]['pmkId'];
+        // Get matching IDs and grab that user info
+        $match_ids = array();
+        foreach ($results as $result)
+        {
+            $match_ids[] = $result['fnkSwipeeId'];
+        }
+
+        $query = "SELECT * FROM tblPerson ";
+        $query.= "INNER JOIN tblMatches ON pmkId = fnkSwiperId ";
+        $query.= "WHERE pmkId IN (" . rtrim(implode($match_ids, ", "), ", ") . ") ";
+        $query.= " AND fnkSwipeeId = " . $user_id . " AND fldMatched = 1";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        $matches = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $matches;
+    }
+
+    public function selectStrangersbyNetId($net_id)
+    {
+
+    }
+
+    public function selectStrangersBy($values)
+    {
+
     }
 
     // public function selectAll

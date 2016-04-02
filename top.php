@@ -5,7 +5,7 @@ require_once('lib/custom-functions.php');
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Google Link text so put something relevant here</title>
+        <title>Habitat</title>
         <meta charset="utf-8">
         <meta name="author" content="Mark me wrong">
         <meta name="description" content="Mark me wrong for not changing this">
@@ -117,7 +117,7 @@ require_once('lib/custom-functions.php');
         $whichPass = "qfBhlGQ56O3w";
         $dbName = "EDZWONAR_habitat";
         $db = new Database($dbUserName, $whichPass, $dbName);
-
+        
         $username = $_SERVER["REMOTE_USER"];
         ?>	
 
