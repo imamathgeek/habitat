@@ -12,7 +12,7 @@ $firstName = "Shizzy";
 $lastName = "Shay";
 $email = "something@uvm.edu";
 $username = "something else";
-
+$year = "Freshman";
 ?>
 
 <article id="main">
@@ -101,6 +101,71 @@ $username = "something else";
             </label>
             </fieldset>
 
+            <fieldset class="wrapper">
+            <legend>Year</legend>
+
+
+            <fieldset  class="lists">
+                <label for="lstDesc"> Type</label>
+                <select id="lstDesc" 
+                        name="lstDesc" 
+                        tabindex="520" >
+                    <option <?php if ($year == "Freshman") print " selected "; ?>
+                        value="Freshman"> Freshman </option>
+
+                    <option <?php if ($year == "Sophmore") print " selected "; ?>
+                        value="Sophmore"> Sophmore </option>
+
+                    <option <?php if ($year == "Junior") print " selected "; ?>
+                        value="Junior"> Junior </option>
+
+                    <option <?php if ($year == "Senior") print " selected "; ?>
+                        value="Senior"> Senior </option>
+
+                </select>
+            </fieldset>
+
+
+            
+             <!-- gender -->
+            <fieldset class="radio">
+                <p>What is your gender?</p>
+                <label><input type="radio" 
+                              id="radGenderMale" 
+                              name="radGender" 
+                              value="Male"
+                              <?php if ($gender == "Male") print 'checked' ?>
+                              tabindex="330"> Male</label>
+                <label><input type="radio" 
+                              id="radGenderFemale" 
+                              name="radGender" 
+                              value="Female"
+                              <?php if ($gender == "Female") print 'checked' ?>
+                              tabindex="340"> Female</label>
+                <label><input type="radio" 
+                              id="radGenderOther" 
+                              name="radGender" 
+                              value="Other"
+                              <?php if ($gender == "Other") print 'checked' ?>
+                              tabindex="340"> Other </label>
+                <label><input type="radio" 
+                               id="radGenderPrefernottodisclose" 
+                               name="radGender" 
+                               value="Prefer not to disclose"
+                               <?php if ($gender == "Prefer not to disclose") print 'checked' ?>
+                               tabindex="340"> Prefer not to disclose</label>
+            </fieldset>
+
+             <fieldset class="contact">
+                <label for="txtUserName" class="required"> Username
+                    <input type="text" id="txtUserName" name="txtUserName"
+                           value="<?php print $username; ?>"
+                           tabindex="100"  maxlength="45" placeholder="Enter your username"
+                           <?php if ($usernameERROR) print 'class="mistake"'; ?>
+                           onfocus="this.select()"
+                           autofocus>
+                </label>
+                </fieldset>
 
         </fieldset> <!-- ends contact -->
        
