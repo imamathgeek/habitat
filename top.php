@@ -2,7 +2,7 @@
 include "lib/constants.php";
 require_once('lib/custom-functions.php');
 
-if ($_SERVER['HTTP_HOST'] = 'localhost:8888')
+if ($_SERVER['HTTP_HOST'] == 'localhost:8888')
 	$address = 'http://localhost:8888';
 else
 	$address = 'http://jsiebert.w3.uvm.edu/codefest/habitat';
