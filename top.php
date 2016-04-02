@@ -117,7 +117,7 @@ require_once('lib/custom-functions.php');
         $whichPass = "qfBhlGQ56O3w";
         $dbName = "EDZWONAR_habitat";
         $db = new Database($dbUserName, $whichPass, $dbName);
-
+        
         $username = $_SERVER["REMOTE_USER"];
         ?>	
 
