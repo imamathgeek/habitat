@@ -118,8 +118,7 @@ require_once('lib/custom-functions.php');
         $dbName = "EDZWONAR_habitat";
         $db = new Database($dbUserName, $whichPass, $dbName);
 
-        $person = $db->select("tblPerson", array("fldFirstName" => "Emilie"));
-        print_r($person);
+        $username = $_SERVER["REMOTE_USER"];
         ?>	
 
     </head>
