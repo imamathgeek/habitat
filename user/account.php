@@ -2,6 +2,7 @@
 <?php
 
 include "../top.php";
+include "../nav.php";
 include "../lib/validation-functions.php";
 
 $array = array($username);
@@ -275,6 +276,7 @@ if (isset($_POST["btnSubmit"])) {
                 else {
                 
                 	print '<p>Name: '.$person['fldFirstName'].' '.$person['fldLastName'].'</p>';
+                	print '<p>Gender: '.$person['fldGender'].'</p>';
                 	print '<p>Email: '.$person['fldEmail'].'</p>';
                 	print '<p>Year: '.$person['fldYear'].'</p>';
                 	print '<p>On/Off Campus: ';
