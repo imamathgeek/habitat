@@ -16,8 +16,9 @@ print'<html>';
 $firstName = "Jack";
 $lastName = "Steffens";
 $email = "jsteffen@uvm.edu";
-$year = "2017";
-$bio = "Suh duuu";
+$year = $person['fldYear'];
+$bio = $person['fldBio'];
+$onOff = $person['fldOnCampus'];
 $gender = $person['fldGender'];
 
 // Initialize Error Flags one for each form element we validate
@@ -81,8 +82,8 @@ if (isset($_POST["btnSubmit"])) {
     }
 
 
-    if ($year = ""){
-        $errorMsg[]= "Please enter what year you are in at UVM.";
+    if (($year = "") | ($year < 1)){
+        $errorMsg[]= "Please enter what year you are in at UVM.(Integer with a value of at least 1)";
         $yearERROR = true;
     }
 
@@ -168,7 +169,43 @@ if (isset($_POST["btnSubmit"])) {
                                    autofocus>
                             </label>
 
+                            <label for="intYear" class="required">Year
+
+                             <input type="number" id="intYear" name="intYear"
+                   
+                                  tabindex="100" maxlength="35" placeholder="Year"
+                                <?php if ($yearERROR) print 'class="mistake"'; ?>
+                                  onfocus="this.select()"
+                                  autofocus>
+                             </label> 
+
               <br><br>
+
+              <fieldset class="radio">                          
+
+                            <legend>On/Off Campus</legend>
+
+                            <label>
+
+                                <input type="radio" 
+                                       id="radOnCampus" 
+                                       name="radOnOffCampus" 
+                                       value="On"
+                                       <?php if ($onOff == 1) print 'checked' ?>
+                                       tabindex="330">On
+                            </label>
+
+                            <label>
+
+                                <input type="radio" 
+                                       id="radOffCampus" 
+                                       name="radOnOffCampus" 
+                                       value="Off"
+                                       <?php if ($onOff == 0) print 'checked' ?>
+                                       tabindex="340">Off
+                            </label>
+
+                        </fieldset>
 
                         <br><br>
                         <fieldset class="radio">                          
