@@ -305,7 +305,8 @@ if (isset($_POST["btnSubmit"])) {
                               value="yesPartier"><img src="img/partyAnimal.gif" width="200" height="200"></label>
                 <br>
                 <label><input type="radio" id="radNoPartier" 
-                              name="radPartier" value="noPartier"><img src="img/bookWorm.gif" width="200" height="200"></label>
+                              name="radPartier" value="noPartier">
+                              <img src="<?= ROOT . '/web/img/gifs/bookWorm.gif'; ?>"></label>
             </fieldset>
             
 
