@@ -3,10 +3,11 @@
 include "top.php";
 include "lib/validation-functions.php";
 
+print '<p class="text-center"><a href="' . ROOT . '/user/home.php">Already a member? Click here to sign in.</a></p>';
+
 // Initialize variables one for each form element
 // in the order they appear on the form
 //include "top.php";
-print'<html>';
 $firstName = "";
 $lastName = "";
 $email = "@uvm.edu";
@@ -246,21 +247,7 @@ if (isset($_POST["btnSubmit"])) {
                             </textarea>
 
 
-                        <br><br>
-
-
-
-
-                      
-
- <fieldset class="buttons">
-
-                            <label>Submit</label>
-                            <input type="submit" id="btnSubmit" name="btnSubmit" value="Save" tabindex="900" class="button">
-
- </fieldset>
-
-                        <br><br>           
+                        <br><br>       
                         <fieldset class="buttons">
                           <label>Submit</label>
                           <input type="submit" id="btnSubmit" name="btnSubmit" value="Save" tabindex="900" class="button">
