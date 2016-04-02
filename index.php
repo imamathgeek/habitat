@@ -64,12 +64,19 @@ if (isset($_POST["btnSubmit"])) {
         $errorMsg[] = "Your email address appears to be incorrect.";
         $emailERROR = true;
     }
-    
+    if (($year = "") | ($year < 1)){
+        $errorMsg[]= "Please enter what year you are in at UVM.(Integer with a value of at least 1)";
+        $yearERROR = true;
+    }
     else if (!verifyNumeric($year)){
         $errorMsg[] = "Your year must be a numeric value.";
         $yearERROR = true;
     }
     
+    if(!verifyAlphaNum($bio)){
+        $errorMsg[] = "Your bio appears to have extra characters";
+        $bioERROR = true;
+    }
   if (!empty($errorMsg)){
     print '<ul>';
     foreach($errorMsg as $error){
@@ -190,7 +197,11 @@ if (isset($_POST["btnSubmit"])) {
                                        name="radGender" 
                                        value="Male"
                                        <?php if ($gender == "Male" || $gender == "male") print 'checked' ?>
-                                       tabindex="330">Male
+
+                                       tabindex="330"><img id="imgMale" src="web/img/gifs/male.gif" width="55" height="55" onclick="RadioClicked('radGenderField', 'radGender','frmRegister')" style="cursor:pointer;"> 
+
+                                     
+
                             </label>
 
                             <label>
@@ -200,7 +211,10 @@ if (isset($_POST["btnSubmit"])) {
                                        name="radGender" 
                                        value="Female"
                                        <?php if ($gender == "Female" || $gender == "female") print 'checked' ?>
-                                       tabindex="340">Female
+
+
+                                       tabindex="340"> <img id="imgFemale" src="web/img/gifs/female.gif" width="55" height="55" onclick="RadioClicked('radGenderField', 'radGender','frmRegister')" style="cursor:pointer;">
+
                             </label>
 
                             <label>
@@ -210,7 +224,10 @@ if (isset($_POST["btnSubmit"])) {
                                        name="radGender" 
                                        value="Other"
                                        <?php if ($gender == "Other" or $gender == "other") print 'checked' ?>
-                                       tabindex="330">Other
+
+                                       tabindex="330"><img id="imgFemale" src="web/img/gifs/otherGender.gif" width="55" height="55" onclick="RadioClicked('radGenderField', 'radGender','frmRegister')" style="cursor:pointer;"> 
+
+                                     
                             </label>
 
                         </fieldset>
@@ -228,12 +245,28 @@ if (isset($_POST["btnSubmit"])) {
                                       style="width: 25em; height: 4em;" ><?php print $bio; ?>
                             </textarea>
 
+
+                        <br><br>
+
+
+
+
+                      
+
+ <fieldset class="buttons">
+
+                            <label>Submit</label>
+                            <input type="submit" id="btnSubmit" name="btnSubmit" value="Save" tabindex="900" class="button">
+
+ </fieldset>
+
                         <br><br>           
                         <fieldset class="buttons">
                           <label>Submit</label>
                           <input type="submit" id="btnSubmit" name="btnSubmit" value="Save" tabindex="900" class="button">
                         </fieldset>
                       </fieldset>
+
                 </form>
                 <?php } ?>
              </html>
