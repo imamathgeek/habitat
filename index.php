@@ -1,3 +1,4 @@
+
 <article id="main">
     <?php
     include top.php;
@@ -134,8 +135,3 @@ include "footer.php";
 if ($debug)
     print "<p>END OF PROCESSING</p>";
 ?>
-
-
-
-
-
