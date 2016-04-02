@@ -1,5 +1,7 @@
 <?php
 include("../top.php");
+
+$matches = $db->selectMatchesByNetId('edzwonar');
 ?>
 
 <h1>Meet Your Matches!</h1>
@@ -15,18 +17,18 @@ include("../top.php");
             <th>On/Off Campus?</th>
         </tr>
     </thead>
+<?php if (!empty($matches)): ?>
     <tbody>
+    <?php foreach ($matches as $match): ?>
         <tr>
-            <td>Name</td>
-            <td>Gender</td>
-            <td>Year</td>
-            <td>On/Off Campus?</td>
+            <td><?= $match['fldFirstName'] . " " . $match['fldLastName']; ?></td>
+            <td><?= $match['fldGender']; ?></td>
+            <td><?= $match['fldYear']; ?></td>
+            <td>Unknown</td>
         </tr>
-        <tr>
-            <td>Sally Sunshine</td>
-            <td>Female</td>
-            <td>Year 3</td>
-            <td>Off Campus</td>
-        </tr>
+    <?php endforeach; ?>
     </tbody>
+<? else: ?>
+    <td>No matches yet, boss.</td>
+<?php endif; ?>
 </table>

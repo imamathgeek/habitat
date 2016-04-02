@@ -1,15 +1,7 @@
-
 <?php
-
-include "../top.php";
-include "../lib/validation-functions.php";
-
-$person = $db->select('tblPerson', $username);
-
+print '<html>';
 // Initialize variables one for each form element
 // in the order they appear on the form
-//include "top.php";
-print'<html>';
 
 $firstName = "Jack";
 $lastName = "Steffens";
@@ -86,7 +78,7 @@ if (isset($_POST["btnSubmit"])) {
         $bioERROR = true;
     }
     
-  // Process form
+	// Process form
         if (!$errorMsg) {
         if ($debug)
             print "<p>Form is valid</p>";
@@ -147,7 +139,7 @@ if (isset($_POST["btnSubmit"])) {
                                    autofocus>
                             </label>
 
-              <br><br>
+ 							<br><br>
 
                         <br><br>
                         <fieldset class="radio">                          
@@ -177,11 +169,11 @@ if (isset($_POST["btnSubmit"])) {
                             <label>
 
                                 <input type="radio" 
-                                       id="radGenderOther" 
+                                       id="radGenderUnidentified" 
                                        name="radGender" 
-                                       value="Other"
-                                       <?php if ($gender == "Other") print 'checked' ?>
-                                       tabindex="330">Other
+                                       value="Unidentified"
+                                       <?php if ($gender == "Unidentified") print 'checked' ?>
+                                       tabindex="330">Unidentified
                             </label>
 
                         </fieldset>
@@ -207,4 +199,5 @@ if (isset($_POST["btnSubmit"])) {
                             <input type="submit" id="btnSubmit" name="btnSubmit" value="Save" tabindex="900" class="button">
 
                 </form>
-             </html>
+
+</html>
