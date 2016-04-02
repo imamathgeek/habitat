@@ -33,8 +33,8 @@ require_once('lib/custom-functions.php');
         //     www-root
         
         
-        $includeCorePath = "/core/";
-        $includeLibPath = "/lib/";
+        $includeCorePath = "core/";
+        $includeLibPath = "lib/";
         
         
         // require_once('lib/mailMessage.php');
