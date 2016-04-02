@@ -88,9 +88,8 @@ h3 {
     border: 1px solid;
     border-radius: 15px;
     display: block;
-    margin: auto;
+    margin: 1em auto auto;
     padding: 8px;
-    margin-top: 1em;
 }
 fieldset p {
     display: block;
@@ -100,17 +99,22 @@ fieldset p {
     box-shadow: 0 0 15px #1fb097;
 }
 #frmRegister h3 {
-    text-align: center;
     background-color: #1fb097;
     border-radius: 5em;
+    margin-top: 0.5em;
     padding: 3px;
-    margin-top: .5em;
+    text-align: center;
 }
 #btnSubmit {
     display: block;
-    margin: auto;
-    margin-top: 1em;
+    margin: 1em auto auto;
 }
-#txtBio {
-
+#radGenderFemale {
+    display: none;
+}
+#radGenderOther {
+    display: none;
+}
+#radGenderMale {
+    display: none;
 }
