@@ -11,8 +11,8 @@ $person = $db->select('tblPerson', $array);
 
 // Initialize variables one for each form element
 // in the order they appear on the form
+//include "top.php";
 print'<html>';
-
 
 $firstName = $person['fldFirstName'];
 $lastName = $person['fldLastName'];
@@ -86,12 +86,8 @@ if (isset($_POST["btnSubmit"])) {
     }
 
 
-    if ($year = ""){
-        $errorMsg[]= "Please enter what year you are in at UVM.";
-
   /*  if (($year = "")){
         $errorMsg[]= "Please enter what year you are in at UVM (Integer with a value of at least 1).";
->>>>>>> Stashed changes
         $yearERROR = true;
     }
 
@@ -126,13 +122,11 @@ if (isset($_POST["btnSubmit"])) {
   
 
 
-   print'<h1 id="frmProfile">Profile</h1>';
    ?>
 
-
    <h1 id="frmProfile">Account</h1>
-<h2><a href="?editId=<?php print $person['pmkId'];?>">Edit</a></h2>
-	
+
+	<a href="?editId=<?php print $person['pmkId'];?>">Edit</a>
  
 <?php if (isset($_GET['editId'])) {
     $startRecord = (int) $_GET['editId'];
@@ -191,8 +185,33 @@ if (isset($_POST["btnSubmit"])) {
                                   autofocus>
                              </label> 
 
-
               <br><br>
+
+              <fieldset class="radio">                          
+
+                            <legend>On/Off Campus</legend>
+
+                            <label>
+
+                                <input type="radio" 
+                                       id="radOnCampus" 
+                                       name="radOnOffCampus" 
+                                       value="On"
+                                       <?php if ($onOff == 1) print 'checked' ?>
+                                       tabindex="330">On
+                            </label>
+
+                            <label>
+
+                                <input type="radio" 
+                                       id="radOffCampus" 
+                                       name="radOnOffCampus" 
+                                       value="Off"
+                                       <?php if ($onOff == 0) print 'checked' ?>
+                                       tabindex="340">Off
+                            </label>
+
+                        </fieldset>
 
                         <br><br>
                         <fieldset class="radio">                          
@@ -267,9 +286,6 @@ if (isset($_POST["btnSubmit"])) {
                 	else{
                 		print "Off";
                     }
-                    print '</p>';
-                    print '<p>Bio: '.$person['fldBio'].'</p>';
-                    
                 	
                 
                 }

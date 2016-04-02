@@ -33,7 +33,7 @@ if (isset($_POST["btnSubmit"])) {
     $lastName =  htmlentities($_POST["txtLastName"], ENT_QUOTES, "UTF-8");
     $email = filter_var($_POST["txtEmail"], FILTER_SANITIZE_EMAIL);
     $gender = htmlentities($_POST["radGender"], ENT_QUOTES, "UTF-8");
-    // $year = 
+    $year = htmlentities($_POST["intYear"], ENT_QUOTES, "UTF-8");
     $bio = htmlentities($_POST["txtBio"], ENT_QUOTES, "UTF-8");
     
     $dataRecord[] = $firstName;
@@ -229,20 +229,12 @@ if (isset($_POST["btnSubmit"])) {
                                       style="width: 25em; height: 4em;" ><?php print $bio; ?>
                             </textarea>
 
-                        <br><br>
-
-
-
-
-                      
-
- <fieldset class="buttons">
-
-                            <label>Submit</label>
-                            <input type="submit" id="btnSubmit" name="btnSubmit" value="Save" tabindex="900" class="button">
-</fieldset>
-
- </fieldset>
+                        <br><br>           
+                        <fieldset class="buttons">
+                          <label>Submit</label>
+                          <input type="submit" id="btnSubmit" name="btnSubmit" value="Save" tabindex="900" class="button">
+                        </fieldset>
+                      </fieldset>
                 </form>
                 <?php } ?>
              </html>

@@ -18,22 +18,15 @@ define("ROOT", $address);
         <meta charset="utf-8">
         <meta name="author" content="Mark me wrong">
         <meta name="description" content="Mark me wrong for not changing this">
-
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!--[if lt IE 9]>
         <script src="//html5shim.googlecode.com/sin/trunk/html5.js"></script>
         <![endif]-->
 
-
-        <img src="logo.jpg" alt="logo" width="400">
         <link rel="stylesheet" href="style.css" type="text/css" media="screen">
-
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" href="<?= ROOT . '/style.css' ?>" type="text/css" media="screen">
-
-
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         
         <?php
         $debug = false;

@@ -10,11 +10,10 @@ if (!empty($_POST)) {
 	}
 
 	$match_id = $_POST['hidUserId'];
-
 	$db->insertMatch($username, $match_id, $is_match);
 }
 
-$strangers = $db->selectStrangersByNetId('jsiebert');
+$strangers = $db->selectStrangersByNetId($username);
 $stranger = $strangers[0];
 
 ?>
@@ -45,12 +44,12 @@ $stranger = $strangers[0];
 	</div>
 	<div>
 		<form action="<?php print $phpSelf; ?>" method="post" id="frmNoMatch">
-			<input type="hidden" id="hidUserId" name="hidUserId" value="<?= print $stranger['pmkId']; ?>" />
+			<input type="hidden" id="hidUserId" name="hidUserId" value="<?php print $stranger['pmkId']; ?>" />
 			<input type="submit" id="btnNo" name="btnNo" value="Nah" class="button">
 		</form>
 		<a>View Profile</a>
 		<form action="<?php print $phpSelf; ?>" method="post" id="frmMatch">
-			<input type="hidden" id="hidUserId" name="hidUserId" value="<?= print $stranger['pmkId']; ?>" />
+			<input type="hidden" id="hidUserId" name="hidUserId" value="<?php print $stranger['pmkId']; ?>" />
 			<input type="submit" id="btnYes" name="btnYes" value="Yes" class="button">
 		</form>
 	</div>
