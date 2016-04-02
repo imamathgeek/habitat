@@ -1,15 +1,7 @@
-
 <?php
-
-include "../top.php";
-include "../lib/validation-functions.php";
-
-$person = $db->select('tblPerson', $username);
-
+print '<html>';
 // Initialize variables one for each form element
 // in the order they appear on the form
-//include "top.php";
-print'<html>';
 
 $firstName = "Jack";
 $lastName = "Steffens";
@@ -34,8 +26,6 @@ $errorMsg = array();
 $dataRecord = array();
 
 if (isset($_POST["btnSubmit"])) {
-
-
     // Collect field data
    
     $dataRecord[] = $lastName;
@@ -87,28 +77,17 @@ if (isset($_POST["btnSubmit"])) {
         $errorMsg[] = "Your bio appears to have extra characters";
         $bioERROR = true;
     }
-
-
-	if (!empty($errorMsg)){
-		print '<ul>';
-		foreach($errorMsg as $error){
-			print '<li>'.$error.'</li>';
-		}
-		print '</ul>';
-	}
     
-    }
-    
-    
-    
-  // Process form
-  if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) {
-  		print '<p>Your information has been updated.</p>';
-  		
-  		// save data to database
+	// Process form
+        if (!$errorMsg) {
+        if ($debug)
+            print "<p>Form is valid</p>";
+        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        //
+        // Save Data
+        
+    } // end form is valid
    }
-   	
-  else{
 
    ?>
 
@@ -160,7 +139,7 @@ if (isset($_POST["btnSubmit"])) {
                                    autofocus>
                             </label>
 
-              <br><br>
+ 							<br><br>
 
                         <br><br>
                         <fieldset class="radio">                          
@@ -190,11 +169,11 @@ if (isset($_POST["btnSubmit"])) {
                             <label>
 
                                 <input type="radio" 
-                                       id="radGenderOther" 
+                                       id="radGenderUnidentified" 
                                        name="radGender" 
-                                       value="Other"
-                                       <?php if ($gender == "Other") print 'checked' ?>
-                                       tabindex="330">Other
+                                       value="Unidentified"
+                                       <?php if ($gender == "Unidentified") print 'checked' ?>
+                                       tabindex="330">Unidentified
                             </label>
 
                         </fieldset>
@@ -220,5 +199,5 @@ if (isset($_POST["btnSubmit"])) {
                             <input type="submit" id="btnSubmit" name="btnSubmit" value="Save" tabindex="900" class="button">
 
                 </form>
-                <?php } ?>
-             </html>
+
+</html>

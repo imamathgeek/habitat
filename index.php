@@ -5,6 +5,7 @@ $firstNameERROR = false;
 $lastNameERROR = false;
 $emailERROR = false;
 $usernameERROR = false;
+$contentERROR = false; 
 
 $gender = "Male";
 $pmkID = -1;
@@ -13,6 +14,7 @@ $lastName = "Shay";
 $email = "something@uvm.edu";
 $username = "something else";
 $year = "Freshman";
+$content = "Soda is secretly good for you....shh!, (it's a secret)";
 ?>
 
 <article id="main">
@@ -20,7 +22,7 @@ $year = "Freshman";
           method="post"
           id="frmRegister">
         <fieldset class="wrapper">
-            <legend>Sign Up!</legend>
+            <p>Sign Up!</p>
 
             <input type="hidden" id="hidpmkID" name="hidpmkID"
                    value="<?php print $pmkID; ?>"
@@ -74,7 +76,7 @@ $year = "Freshman";
         
          <!-- gender -->
         <fieldset class="radio">
-            <p>What is your gender?</p>
+            <label>What is your gender?</label>
             <label><input type="radio" 
                           id="radGenderMale" 
                           name="radGender" 
@@ -126,6 +128,21 @@ $year = "Freshman";
 
 
         </fieldset> <!-- ends contact -->
+
+        <legend>Brief Bio</legend>
+        <fieldset  class="textarea">
+
+                    <label for="txtContent" class="required"> </label>
+                    <textarea id="txtContent" 
+                              name="txtContent" 
+                              tabindex="500"
+            <?php if ($contentERROR) print 'class="mistake"'; ?>
+                              onfocus="this.select()" 
+                              style="width: 20em; height: 5em;" ><?php print 
+                              $content; ?></textarea>
+                    <!-- NOTE: no blank spaces inside the text area -->
+                </fieldset>
+
        
         <fieldset class="buttons">
          
