@@ -1,0 +1,5 @@
+table_name: pair
+registry:
+  - swiper_id: { type: int, allow_null: false }
+  - swiped_id: { type: int, allow_null: false }
+  - is_match: { type: boolean, allow_null: false }

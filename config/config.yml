@@ -64,6 +64,11 @@ global:
             enabled: true
 
     databases:
+        habitat:
+            host: 127.0.0.1:8889
+            user: root
+            pass: root
+            name: habitat
         dinkly:
             host: 127.0.0.1:8889
             user: root
@@ -79,11 +84,7 @@ global:
             user: root
             pass: root
             name: dinkly_unit_test
-        habitat:
-            host: 127.0.0.1:8889
-            user: root
-            pass: root
-            name: habitat
+
 dev:
     settings:
     apps:
