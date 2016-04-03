@@ -1,0 +1,7 @@
+table_name: user
+registry:
+  - id
+  - created_at
+  - updated_at
+  - name: { type: varchar, length: 100, allow_null: false }
+  - net_id : { type: varchar, length: 12, allow_null: false }

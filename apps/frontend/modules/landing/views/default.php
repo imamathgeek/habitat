@@ -3,21 +3,26 @@
     <div class="jumbotron">
       <div>
         <h1>
-          <?php echo Dinkly::translate('Welcome to Dinkly!'); ?> (v<?php echo Dinkly::getConfigValue('dinkly_version', 'global'); ?>)
+          <?php echo Dinkly::translate('Welcome to Habitat!'); ?> (v0)
         </h1>
         <p>
           <?php echo Dinkly::getConfigValue('app_description'); ?>
         </p>
-        <h5>
-          Brought to you by: <a href="https://github.com/lewsid">lewsid</a>,
-          <a href="https://github.com/ScottConnor-BHG">ScottConnor-BHG</a>,
-          <a href="https://github.com/andrewvt">andrewvt</a>,
-          <a href="https://github.com/smacewan101">smacewan101</a>,
-          <a href="https://github.com/unclecheese">unclecheese</a>,
-          and
-          <a href="https://github.com/elliott250">elliott250</a>
-        </h5>
       </div>
+    </div>
+    <div>
+      <form>
+        <p>Please log in with your UVM Net ID and password.</p>
+        <div class="form-group">
+          <label for="net-id">UVM Net ID</label>
+          <input type="text" class="form-control" name="net-id" id="net-id">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="password" id="password">
+        </div>
+        <button type="submit" class="btn btn-default">Log In</button>
+      </form>
     </div>
   </div>
 </div>
